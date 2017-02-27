@@ -1,0 +1,278 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Health.MasterPage.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Health App</title>
+
+    <link href="../css/application.css" rel="stylesheet" />
+    <link href="../css/messageAlert.css" rel="stylesheet" />
+    <link href="../css/Utiles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */
+    </script>
+    <script src="../sweetalert-master/dist/sweetalert.min.js"></script>
+    <script src="../Scripts/pleaseWait.js"></script>
+    <link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css" />
+    <link href="../css/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/datatables/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/datatables/jquery-ui.css" />
+    <script type="text/javascript">
+        function ShowPopup(titulo, message, type, textBt) {
+        swal({
+            title: titulo,
+            text: message,
+            type: type,
+            confirmButtonText: textBt
+        });
+        };
+   </script>
+</head>
+<body>
+    <form runat="server">
+        <div class="logo">
+        <img src="../Imagenes/LOGO.png" width="225px" height="80px" />
+    </div>
+        <nav runat="server" id="sidebar" class="sidebar nav-collapse collapse">
+            <ul id="side-nav" class="side-nav">
+                <li class="">
+                    <a href="../WebForms/Wfrm_Inicio.aspx"><i class="fa fa-home"></i> <span class="name">Menu Health App</span></a>
+                </li>
+               <li class="panel">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                       data-parent="#side-nav" href="#menu-levels-collapse"><i class="fa fa-folder-open"></i> <span class="name">Clinica</span></a>
+                    <ul id="menu-levels-collapse" class="panel-collapse collapse">
+                        <li  runat="server" id="liMenuClinica"><a><asp:LinkButton runat="server" ID="lblMenuClinica" PostBackUrl="~/WebForms/Wfrm_Clinica.aspx?"></asp:LinkButton></a></li>
+                        <li><a>Doctores</a></li>
+                    </ul>
+                    <a class="accordion-toggle collapsed" data-toggle="collapse"
+                       data-parent="#side-nav" href="#special-collapse"><i class="fa fa-folder-open"></i> <span class="name">Administración</span></a>
+                    <ul id="special-collapse" class="panel-collapse collapse">
+                        <li runat="server" id="liMenuCambioClave" visible="false"><asp:LinkButton runat="server" PostBackUrl="~/WebForms/Wfrm_CambioClave.aspx?appel=3lHyB9vZhvI=" ID="lblMenuCambioClave"></asp:LinkButton></li>
+                        <li runat="server" id="liMenuUsuarios" visible="false"><asp:LinkButton runat="server" PostBackUrl="~/WebForms/Wfrm_Usuarios.aspx" ID="lblMenuUsuarios"></asp:LinkButton></li>
+                        <li runat="server" id="liMenuPermisos" visible="false"><asp:LinkButton runat="server" PostBackUrl="~/WebForms/Wfrm_CambioClave.aspx?appel=3lHyB9vZhvI=" ID="lblMenuPermisos"></asp:LinkButton></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>    <div class="wrap">
+        <header class="page-header">
+            <div class="navbar">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li class="dropdown" runat="server" id="liMensajes">
+                        <a href="#" title="Messages" id="messages"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-comment"></i>
+                        </a>
+                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/1.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Jane Hew</div>
+                                        <div class="text">
+                                            Hey, John! How is it going? ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/2.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Alies Rumiancaŭ</div>
+                                        <div class="text">
+                                            I'll definitely buy this template
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="message">
+                                    <img src="img/3.png" alt="">
+                                    <div class="details">
+                                        <div class="sender">Michał Rumiancaŭ</div>
+                                        <div class="text">
+                                            Is it really Lore ipsum? Lore ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all messages <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" runat="server"  id="liTickets">
+                        <a href="#" title="8 support tickets"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <span class="count">8</span>
+                        </a>
+                        <ul id="support-menu" class="dropdown-menu support" role="menu">
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        Check out this awesome ticket
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        "What is the best way to get ...
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        This is just a simple notification
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        12 new orders has arrived today
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="support-ticket">
+                                    <div class="picture">
+                                        <span class="label label-important"><i class="fa fa-plus"></i></span>
+                                    </div>
+                                    <div class="details">
+                                        One more thing that just happened
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="text-align-center see-all">
+                                    See all tickets <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="hidden-xs dropdown" runat="server" id="liPerfil">
+                        <a href="#" title="" id="account"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+                        <ul id="account-menu" class="dropdown-menu account" role="menu">
+                            <li role="presentation" class="account-picture">
+                                <img runat="server" id="ImgPerfil" title="">
+                                <asp:Label runat="server" ID="LblNombreUsuario"></asp:Label>
+                            </li>
+                            <li role="presentation">
+                                <a href="../WebForms/Wfrm_Perfil.aspx?appel=3lHyB9vZhvI=" class="link" runat="server" visible="false" id="LnkPerfil">
+                                    <i class="fa fa-user"></i>
+                                    <asp:Label runat="server" ID="LblPerfil" Enabled="false"></asp:Label>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="component_calendar.html" class="link">
+                                    <i class="fa fa-calendar"></i>
+                                    Calendar
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="link">
+                                    <i class="fa fa-inbox"></i>
+                                    Inbox
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#"
+                           class="btn-navbar"
+                           data-toggle="collapse"
+                           data-target=".sidebar"
+                           title="">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs"><a href="../Wfrm_Login.aspx"><i class="glyphicon glyphicon-off"></i></a></li>
+                    <li>
+                        <div class="form-search">
+                            <asp:ImageButton runat="server" ID="ImgEsp" Width="35px" Height="35px"  formnovalidate ImageUrl="~/Imagenes/SpainFlag.png" />
+                            <asp:ImageButton runat="server" ID="ImgEng" Width="35px" Height="35px"  formnovalidate ImageUrl="~/Imagenes/USAFlag.png" />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>        
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+    </div>
+
+
+    </form>
+<!-- common libraries. required for every page-->
+<script src="../lib/jquery/dist/jquery.min.js"></script>
+<script src="../lib/jquery-pjax/jquery.pjax.js"></script>
+<script src="../lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<script src="../lib/widgster/widgster.js"></script>
+<script src="../lib/underscore/underscore.js"></script>
+
+<!-- common application js -->
+<script src="../js/app.js"></script>
+<script src="../js/settings.js"></script>
+
+<!-- common templates -->
+
+
+
+    <!-- page specific scripts -->
+        <!-- page libs -->
+        <script src="../lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="../lib/select2/select2.min.js"></script>
+        <script src="../lib/moment/moment.js"></script>
+        <script src="../lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="../lib/parsleyjs/dist/parsley.min.js"></script>
+
+
+        <!-- page application js -->
+        <script src="../js/forms-account.js"></script>
+        <script src="../js/tables-dynamic.js"></script>
+
+        <script src="../js/datatable/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../js/datatable/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="../js/datatable/dataTables.jqueryui.js" type="text/javascript"></script>
+        
+
+        
+</body>
+</html>

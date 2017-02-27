@@ -1,0 +1,4 @@
+/t:lib 
+/v:1.0.1.13 /comp:"QHealth" /prod:"QHealth" /embed:QHealth.en-US.resources,QHealth.en-US.resources 
+/v:1.0.1.13 /comp:"QHealth" /prod:"QHealth" /embed:QHealth.es-GT.resources,QHealth.es-GT.resources 
+/culture:es-GT  /out:QHealth.resources.dll 

@@ -1,0 +1,73 @@
+﻿/*Using this form icon notification*/
+.badge1 {
+   position:relative;
+}
+.badge1[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:-50px;
+   right:-10px;
+   font-size:1em;
+   background:red;
+   color:white;
+   width:28px;height:28px;
+   text-align:center;
+   line-height:28px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
+
+.badge2 {
+   position:relative;
+}
+.badge2[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:-50px;
+   right: -10px;
+   font-size:1em;
+   background:green;
+   color:white;
+   width:28px;height:28px;
+   text-align:center;
+   line-height:28px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
+}
+
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+.modal
+{
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: Black;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.8;
+}
+.center
+{
+    z-index: 1000;
+    margin: 300px auto;
+    padding: 10px;
+    width: 130px;
+    background-color: White;
+    border-radius: 10px;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -moz-opacity: 1;
+}
+.center img
+{
+    height: 128px;
+    width: 128px;
+}
