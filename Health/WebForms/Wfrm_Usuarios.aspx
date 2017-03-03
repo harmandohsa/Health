@@ -128,7 +128,46 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-12">
-                                <asp:PlaceHolder ID = "PlaceHolder1" runat="server" />
+                                <table class="display" id="tbl_usuarios" >
+
+                                    <asp:Repeater ID="GrdLGE" runat="server">
+                                        <HeaderTemplate>
+                                            <thead>
+                                                <tr>
+                                                    <%--<th></th>--%>
+                                                    <th>
+                                                        <span id="span_col1" style="visibility:hidden;" >Código</span>
+                                                    </th>
+                                                    <th>
+                                                        <span id="span_col2">Nombres</span>
+                                                    </th>
+                                                    <th>
+                                                        <span id="span_col3">Usuario</span>
+                                                    </th>
+                                                    <th>
+                                                        <span id="span_col4">Correo Electrónico</span>
+                                                    </th>
+                                                    <th>
+                                                        <span id="span_col5">Tipo de usuario</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <%--Llenado del Grid--%>
+                                            <tr class="odd gradeX">
+                                                <%--<td></td>--%>
+                                                <td style="visibility:hidden;"><%#DataBinder.Eval(Container.DataItem, "PersonaId")%></td>
+                                                <td><%#DataBinder.Eval(Container.DataItem, "Nombre")%> </td>
+                                                <td><%#DataBinder.Eval(Container.DataItem, "Usuario")%> </td>
+                                                <td><%#DataBinder.Eval(Container.DataItem, "Correo")%> </td>
+                                                <td><%#DataBinder.Eval(Container.DataItem, "Tipo_Usuario")%> </td>
+                                            </tr>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </table>
                             </div>
                             <div class="mt">
                     
@@ -146,6 +185,19 @@
         <script src="../lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
         <script src="../lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="../lib/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        
+        <script>
+            function Mensaje()
+            {
+                alert('hola');
+                var table = $('#tbl_usuarios_wrapper').DataTable();
+                alert('hola1');
+                table.destroy();
+                alert('hola2');
+                
+            }
+        </script>
+
 
         <script>
             var $ve = $.noConflict();
@@ -154,36 +206,33 @@
 
             $ve(document).ready(function () {
 
+                DibujarTabla()
 
-                function reLoadTable() {
-                    if ($.fn.dataTable.isDataTable('#tbl_usuarios')) {
+                function DibujarTabla()
+                {
+                    if (Txt_Trad == "es-GT") {
+                        var idiomaTabla = "../DataTable-ES.txt"
+                    } else {
+                        var idiomaTabla = "../DataTable-EN.txt"
                     }
-                    else {
-                        $('#tbl_usuarios').DataTable().destroy();
-                    }
 
+                    $('#tbl_usuarios').DataTable({
+                        "oLanguage": {
+
+                            "sUrl": idiomaTabla
+                        },
+                        "bStateSave": true,
+                        
+                        lengthMenu: [
+                            [15, 20, -1],
+                            [15, 20, "Todos"]
+                        ],
+                        pageLength: 15,
+                        order: [[1, "asc"]],
+                        "bDestroy" : true
+                    });
                 }
-
-
-                if (Txt_Trad == "es-GT") {
-                    var idiomaTabla = "../DataTable-ES.txt"
-                } else {
-                    var idiomaTabla = "../DataTable-EN.txt"
-                }
-
-                $('#tbl_usuarios').DataTable({
-                    "oLanguage": {
-
-                        "sUrl": idiomaTabla
-                    },
-                    bStateSave: true,
-                    lengthMenu: [
-                        [15, 20, -1],
-                        [15, 20, "Todos"]
-                    ],
-                    pageLength: 15,
-                    order: [[1, "asc"]]
-                });
+                
 
             });
 

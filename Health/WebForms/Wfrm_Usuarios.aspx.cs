@@ -67,14 +67,16 @@ namespace Health.WebForms
 
         private void BtnGrabar_Click(object sender, EventArgs e)
         {
+            
             if (Valida() == true)
             {
+
                 int PersonaId = ClPersona.Get_Max_Persona();
                 int UniversidadId = 0;
                 ClPersona.Insert_Persona(PersonaId, Convert.ToInt32(CboAlias.SelectedValue), TxtNombres.Value, TxtApellidos.Value, Convert.ToInt32(CboGenero.SelectedValue), TxtIdNo.Value, TxtDireccion.Value, Convert.ToInt32(CboMunicipio.SelectedValue), TxtTelCasa.Value, TxtTelMovil.Value, UniversidadId, "", "", Convert.ToDateTime(TxtFecNac.Value));
                 int UsuarioId = ClUsuario.Get_Max_Usuario();
                 string Clave = ClUtilitarios.Encrypt(ClUtilitarios.GenerarPass(6, 10), true);
-                ClUsuario.Insert_Usuario(UsuarioId, Convert.ToInt32(Session["ClienteId"]), Convert.ToInt32(CboTipoUsuario.SelectedValue), TxtCorreo.Value,Clave , PersonaId);
+                ClUsuario.Insert_Usuario(UsuarioId, Convert.ToInt32(Session["ClienteId"]), Convert.ToInt32(CboTipoUsuario.SelectedValue), TxtCorreo.Value, Clave, PersonaId);
                 ClUsuario.Create_Permisos(UsuarioId, Convert.ToInt32(CboTipoUsuario.SelectedValue));
                 string Asunto = ClTraductor.BuscaString(Session["Idioma"].ToString(), "91");
                 string Mensaje = Mensaje = "<body><table><tr><td>" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "92") + " " + TxtCorreo.Value + " " + ClTraductor.BuscaString(Session["Idioma"].ToString(), "21") + " " + Clave + "</td></tr></table>";
@@ -221,44 +223,10 @@ namespace Health.WebForms
 
         void CargaUsuarios()
         {
-            
             DataSet ds = ClUsuario.Get_Usuarios(1);
-            StringBuilder html = new StringBuilder();
-
-            html.Append("<table class='display' id='tbl_usuarios'>");
-            html.Append("<thead>");
-            html.Append("<tr>");
-            html.Append("<th style='visibility:hidden;'>Id</th>");
-            html.Append("<th>" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "43") + "</th>");
-            html.Append("<th>" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "84") + "</th>");
-            html.Append("<th>" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "59") + "</th>");
-            html.Append("<th>" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "89") + "</th>");
-            html.Append("</tr>");
-            html.Append("</thead>");
-            html.Append("<tbody>");
-            for (int i = 0; i < ds.Tables["Datos"].Rows.Count; i++)
-            {
-                html.Append("<tr>");
-                html.Append("<td style='visibility:hidden;'>");
-                html.Append(ds.Tables["Datos"].Rows[i]["UsuarioId"]);
-                html.Append("</td>");
-                html.Append("<td><span class='fw - semi - bold'>");
-                html.Append(ds.Tables["Datos"].Rows[i]["Nombre"]);
-                html.Append("</td>");
-                html.Append("<td><span class='fw - semi - bold'>");
-                html.Append(ds.Tables["Datos"].Rows[i]["Usuario"]);
-                html.Append("</td>");
-                html.Append("<td><span class='fw - semi - bold'>");
-                html.Append(ds.Tables["Datos"].Rows[i]["Correo"]);
-                html.Append("</td>");
-                html.Append("<td><span class='fw - semi - bold'>");
-                html.Append(ds.Tables["Datos"].Rows[i]["Tipo_Usuario"]);
-                html.Append("</td>");
-                html.Append("</tr>");
-            }
-            html.Append("</tbody>");
-            html.Append("</table>");
-            PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
+            GrdLGE.DataSource = ds;
+            GrdLGE.DataMember = "Datos";
+            GrdLGE.DataBind();
         }
 
         private void CboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
