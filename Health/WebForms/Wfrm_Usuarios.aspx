@@ -1,5 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site.Master" AutoEventWireup="true" CodeBehind="Wfrm_Usuarios.aspx.cs" Inherits="Health.WebForms.Wfrm_Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site.Master" AutoEventWireup="true" CodeBehind="Wfrm_Usuarios.aspx.cs" Inherits="Health.WebForms.Wfrm_Usuarios" MaintainScrollPositionOnPostback="true" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+     
     <div class="content container">
         <h2 class="page-title"><%--<asp:Label runat="server" ID="LblTitulo"></asp:Label>--%></h2>
         <div class="row">
@@ -58,7 +61,7 @@
                                 </div>
                                 <label class="control-label col-sm-1" id="LblDepartamento" runat="server"></label>
                                 <div class="col-sm-5">
-                                    <asp:DropDownList runat="server" ID="CboDepartamento" AutoPostBack="true" CssClass="select2 select-block-level"></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="CboDepartamento"  AutoPostBack="true" CssClass="select2 select-block-level"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +107,7 @@
                         <div style="padding-bottom:1em;"></div>
                         <div class="row">
                             <div class="col-sm-4">
-                                <asp:Button runat="server" ID="BtnGrabar" CssClass="btn btn-primary" />
+                                <asp:Button runat="server" ID="BtnGrabar" data-loading-text="Grabando..."   CssClass="btn btn-primary" />
                             </div>
                         </div>
                         <div style="padding-bottom:1em;"></div>
@@ -128,49 +131,31 @@
                             <div class="col-sm-1">
                             </div>
                             <div class="col-sm-12">
-                                <table class="display" id="tbl_usuarios" >
-
-                                    <asp:Repeater ID="GrdLGE" runat="server">
-                                        <HeaderTemplate>
-                                            <thead>
-                                                <tr>
-                                                    <%--<th></th>--%>
-                                                    <th>
-                                                        <span id="span_col1" style="visibility:hidden;" >Código</span>
-                                                    </th>
-                                                    <th>
-                                                        <span id="span_col2">Nombres</span>
-                                                    </th>
-                                                    <th>
-                                                        <span id="span_col3">Usuario</span>
-                                                    </th>
-                                                    <th>
-                                                        <span id="span_col4">Correo Electrónico</span>
-                                                    </th>
-                                                    <th>
-                                                        <span id="span_col5">Tipo de usuario</span>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                        </HeaderTemplate>
-                                        <ItemTemplate>
-                                            <%--Llenado del Grid--%>
-                                            <tr class="odd gradeX">
-                                                <%--<td></td>--%>
-                                                <td style="visibility:hidden;"><%#DataBinder.Eval(Container.DataItem, "PersonaId")%></td>
-                                                <td><%#DataBinder.Eval(Container.DataItem, "Nombre")%> </td>
-                                                <td><%#DataBinder.Eval(Container.DataItem, "Usuario")%> </td>
-                                                <td><%#DataBinder.Eval(Container.DataItem, "Correo")%> </td>
-                                                <td><%#DataBinder.Eval(Container.DataItem, "Tipo_Usuario")%> </td>
-                                            </tr>
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                        </FooterTemplate>
-                                    </asp:Repeater>
-                                </table>
-                            </div>
-                            <div class="mt">
-                    
+                               <telerik:RadGrid runat="server" ID="GrdDetalle"  Skin="Material"
+                                        AutoGenerateColumns="false" Width="100%" AllowSorting="true" AllowFilteringByColumn="true" PageSize="10"
+                                          AllowPaging="true" >
+                                        <PagerStyle Mode="Advanced" NextPageText="Siguiente" 
+                                            PrevPageText="Anterior" Position="Bottom" 
+                                            PageSizeLabelText="Regitros"/>
+                                        <MasterTableView Caption="" DataKeyNames="UsuarioId,PersonaId,Nombre,Usuario,Correo,Tipo_Usuario" NoMasterRecordsText="No Hay Registros" ShowFooter="true">
+                                            <Columns>
+                                                <telerik:GridBoundColumn DataField="UsuarioId" UniqueName="RegionId" Visible="false"  HeaderStyle-Width="125px"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="PersonaId" UniqueName="ModuloId" Visible="false" HeaderStyle-Width="125px"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Nombre" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" UniqueName="Nombre" HeaderText="Nombre"  HeaderStyle-Width="425px"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Usuario" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains" UniqueName="Usuario" HeaderText="Usuario"  HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Correo" UniqueName="Correo" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderText="Correo" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                                <telerik:GridBoundColumn DataField="Tipo_USuario" UniqueName="TipoUsuario" AutoPostBackOnFilter="true" CurrentFilterFunction="Contains"  HeaderText="Tipo de Usuario" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                                <telerik:GridTemplateColumn HeaderText="Editar" ShowFilterIcon="false" AllowFiltering="false"  Visible="true" UniqueName="Editar" ItemStyle-HorizontalAlign="Center">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton runat="server" ID="ImgAnexos" Visible="false" ImageUrl="~/Imagenes/24x24/blank.png" formnovalidate ToolTip="Anexos" CommandName="CmdAnexos"/>
+                                                        </ItemTemplate>
+                                                </telerik:GridTemplateColumn> 
+                                            </Columns>        
+                                        </MasterTableView>
+                                        <FilterMenu EnableTheming="true">
+                                            <CollapseAnimation Duration="200" Type="OutQuint" />
+                                        </FilterMenu>
+                                    </telerik:RadGrid>
                             </div>
                         </div>
                     </div>
@@ -186,57 +171,30 @@
         <script src="../lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="../lib/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
         
-        <script>
-            function Mensaje()
-            {
-                alert('hola');
-                var table = $('#tbl_usuarios_wrapper').DataTable();
-                alert('hola1');
-                table.destroy();
-                alert('hola2');
-                
-            }
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="GrdDetalle">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="GrdDetalle" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default">
+        </telerik:RadAjaxLoadingPanel>
+
+        <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+        <script type="text/javascript">
+            function pageLoad() {
+                 $('#<%=BtnGrabar.ClientID%>').click(function () {
+                     $(this).button('loading').delay(100000).queue(function () {
+                         $(this).button('reset');
+                         $(this).dequeue();
+                         $(this).data('loading-text', 'Cargando...');
+                     });
+                 });
+             }
         </script>
-
-
-        <script>
-            var $ve = $.noConflict();
-            var Txt_Trad = document.getElementById('<%=TxtIdioma.ClientID%>').value;
-            
-
-            $ve(document).ready(function () {
-
-                DibujarTabla()
-
-                function DibujarTabla()
-                {
-                    if (Txt_Trad == "es-GT") {
-                        var idiomaTabla = "../DataTable-ES.txt"
-                    } else {
-                        var idiomaTabla = "../DataTable-EN.txt"
-                    }
-
-                    $('#tbl_usuarios').DataTable({
-                        "oLanguage": {
-
-                            "sUrl": idiomaTabla
-                        },
-                        "bStateSave": true,
-                        
-                        lengthMenu: [
-                            [15, 20, -1],
-                            [15, 20, "Todos"]
-                        ],
-                        pageLength: 15,
-                        order: [[1, "asc"]],
-                        "bDestroy" : true
-                    });
-                }
-                
-
-            });
-
-
-
-        </script>
+    </telerik:RadCodeBlock>
+       
 </asp:Content>

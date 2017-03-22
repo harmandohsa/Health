@@ -393,4 +393,16 @@
   <data name="92" xml:space="preserve">
     <value>Le informamos que se ha creado su usuario acceder al sistema Health APP su usuario es:</value>
   </data>
+  <data name="93" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="94" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="95" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="96" xml:space="preserve">
+    <value>Change page: {4} &amp;amp;nbsp;Pagina &amp;lt;strong&amp;gt;{0}&amp;lt;/strong&amp;gt; de &amp;lt;strong&amp;gt;{1}&amp;lt;/strong&amp;gt;, registros &amp;lt;strong&amp;gt;{2}&amp;lt;/strong&amp;gt; a &amp;lt;strong&amp;gt;{3}&amp;lt;/strong&amp;gt; de &amp;lt;strong&amp;gt;{5}&amp;lt;/strong&amp;gt;.</value>
+  </data>
 </root>

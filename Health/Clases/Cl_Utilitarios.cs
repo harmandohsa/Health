@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
 using Health.MasterPage;
+using System.Globalization;
 
 namespace Health.Clases
 {
@@ -228,6 +229,15 @@ namespace Health.Clases
             DropDownList.Items.Insert(0, new ListItem(Texto));
         }
 
-        
+        public void LlenaGrid(DataSet ds, Telerik.Web.UI.RadGrid Grid, string Idioma)
+        {
+            if (Idioma == "es-GT")
+                Grid.Culture = new CultureInfo("es-PE");
+            else if (Idioma == "es-GT")
+                Grid.Culture = new CultureInfo("en-US");
+            Grid.DataSource = ds;
+        }
+
+
     }
 }

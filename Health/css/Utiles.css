@@ -71,3 +71,9 @@ body
     height: 128px;
     width: 128px;
 }
+
+.RadGrid
+{
+   border-radius: 10px;
+   overflow: hidden;
+}

@@ -33,6 +33,7 @@ namespace Health.WebForms
             CboPais.SelectedIndexChanged += CboPais_SelectedIndexChanged;
             CboDepartamento.SelectedIndexChanged += CboDepartamento_SelectedIndexChanged;
             BtnGrabar.Click += BtnGrabar_Click;
+            GrdDetalle.NeedDataSource += GrdDetalle_NeedDataSource;
 
             if (Session["UsuarioId"] == null)
             {
@@ -40,7 +41,7 @@ namespace Health.WebForms
             }
             else if (!IsPostBack)
             {
-                Traduce();
+                
                 DataSet dsPermisos = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
                 if (Convert.ToInt32(dsPermisos.Tables["Datos"].Rows[0]["Editar"]) == 0)
                 {
@@ -55,15 +56,19 @@ namespace Health.WebForms
 
                 }
                 dsPermisos.Clear();
-                
+                Traduce();
+
             }
-            CargaUsuarios();
             TxtIdioma.Value = Session["Idioma"].ToString();
 
 
         }
 
-        
+        private void GrdDetalle_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
+        {
+            ClUtilitarios.LlenaGrid(ClUsuario.Get_Usuarios(1), GrdDetalle, Session["Idioma"].ToString());
+            
+        }
 
         private void BtnGrabar_Click(object sender, EventArgs e)
         {
@@ -83,7 +88,7 @@ namespace Health.WebForms
                 ClUtilitarios.EnvioCorreo(TxtCorreo.Value, TxtNombres.Value + " " + TxtApellidos.Value, Asunto, Mensaje, 0, "", "");
                 Limpiar();
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
-                CargaUsuarios();
+                GrdDetalle.Rebind();
             }
         }
 
@@ -221,13 +226,6 @@ namespace Health.WebForms
 
         }
 
-        void CargaUsuarios()
-        {
-            DataSet ds = ClUsuario.Get_Usuarios(1);
-            GrdLGE.DataSource = ds;
-            GrdLGE.DataMember = "Datos";
-            GrdLGE.DataBind();
-        }
 
         private void CboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -307,6 +305,18 @@ namespace Health.WebForms
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_TipoUsuario(Session["Idioma"].ToString(),1), CboTipoUsuario, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboTipoUsuario, ClTraductor.BuscaString(Session["Idioma"].ToString(), "89"), Session["Idioma"].ToString());
             TxtIdioma.Value = Session["Idioma"].ToString();
+            GrdDetalle.Columns[2].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "43");
+            GrdDetalle.Columns[3].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "84");
+            GrdDetalle.Columns[4].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "59");
+            GrdDetalle.Columns[5].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "89");
+            GrdDetalle.Columns[6].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "93");
+            GrdDetalle.Rebind();
+
+            GrdDetalle.PagerStyle.NextPageText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "94");
+            GrdDetalle.PagerStyle.NextPageToolTip = ClTraductor.BuscaString(Session["Idioma"].ToString(), "94");
+            GrdDetalle.PagerStyle.PrevPageText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "95");
+            GrdDetalle.PagerStyle.PrevPageToolTip = ClTraductor.BuscaString(Session["Idioma"].ToString(), "95");
+            //GrdDetalle.PagerStyle.PagerTextFormat = ClTraductor.BuscaString(Session["Idioma"].ToString(), "96");
         }
     }
 }

@@ -39,6 +39,7 @@
 </head>
 <body>
     <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="logo">
         <img src="../Imagenes/LOGO.png" width="225px" height="80px" />
     </div>
