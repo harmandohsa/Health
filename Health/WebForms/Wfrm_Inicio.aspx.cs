@@ -8,11 +8,13 @@ namespace Health.WebForms
     {
         Cl_Traductor ClTraductor;
         Cl_Utilitarios ClUtilitarios;
+        Cl_Clinica ClClinica;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             ClTraductor = new Cl_Traductor();
             ClUtilitarios = new Cl_Utilitarios();
+            ClClinica = new Cl_Clinica();
 
             ImageButton ImgEng;
             ImgEng = (ImageButton)Master.FindControl("ImgEng");
@@ -29,7 +31,8 @@ namespace Health.WebForms
             else if (!IsPostBack)
             {
                 Traduce();
-                BgClinica.Attributes.Add("data-badge", "1");
+                VerificaClnica();
+                BgClinica.Attributes.Add("data-badge", ClClinica.ClinicasDisponibles(Convert.ToInt32(Session["ClienteId"])).ToString());
                 BgDoctor.Attributes.Add("data-badge", "2");
                 BgUsuarios.Attributes.Add("data-badge", "3");
                 BgPaciente.Attributes.Add("data-badge", "4");
@@ -40,6 +43,18 @@ namespace Health.WebForms
 
 
             
+        }
+
+        void VerificaClnica()
+        {
+            int HayClinica = ClClinica.TieneClinica(Convert.ToInt32(Session["ClienteId"]));
+            if (HayClinica == 0)
+            {
+                BgDoctor.Visible = false;
+                BgUsuarios.Visible = false;
+                BgPaciente.Visible = false;
+                BgCita.Visible = false;
+            }
         }
 
         private void ImgEsp_Click(object sender, System.Web.UI.ImageClickEventArgs e)

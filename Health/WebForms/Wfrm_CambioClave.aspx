@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Site.Master" AutoEventWireup="true" CodeBehind="Wfrm_CambioClave.aspx.cs" Inherits="Health.WebForms.Wfrm_CambioClave" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="content container">
+<asp:UpdatePanel runat="server" UpdateMode="Always">
+    <ContentTemplate>
+        <div class="content container">
         <h2 class="page-title"><%--<asp:Label runat="server" ID="LblTitulo"></asp:Label>--%></h2>
         <div class="row">
             <div class="col-md-8">
@@ -63,4 +65,7 @@
                 </div>
             </div>
         </div>
+    </ContentTemplate>
+</asp:UpdatePanel>
+    
 </asp:Content>

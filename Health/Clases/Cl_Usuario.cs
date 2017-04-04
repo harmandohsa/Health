@@ -253,5 +253,70 @@ namespace Health.Clases
                 return ds;
             }
         }
+
+        public DataSet Get_Relacion_Clinica_Usuario(int UsuarioId)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Get_Relacion_Clinica_Usuario", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
+
+        public void Insert_Relacion_Usuario_Clinica(int UsuarioId, int ClinicaId)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Insert_Relacion_Usuario_Clinica", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                cmd.Parameters.Add("@ClinicaId", SqlDbType.Int).Value = ClinicaId;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+            }
+        }
+
+        public DataSet GetDatosUsuarioId(int UsuarioId, string Idioma)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetDatosUsuarioId", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                cmd.Parameters.Add("@Idioma", SqlDbType.VarChar,10).Value = Idioma;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
     }
 }

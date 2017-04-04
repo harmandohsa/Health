@@ -22,6 +22,15 @@ namespace Health.MasterPage {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
+        /// ImgLogoClinica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImgLogoClinica;
+        
+        /// <summary>
         /// sidebar control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace Health.MasterPage {
         protected global::System.Web.UI.WebControls.LinkButton lblMenuPermisos;
         
         /// <summary>
+        /// LblNomClinica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblNomClinica;
+        
+        /// <summary>
         /// liMensajes control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace Health.MasterPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImgEng;
+        
+        /// <summary>
+        /// upUpdateProgressFlotante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress upUpdateProgressFlotante;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

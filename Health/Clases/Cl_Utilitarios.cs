@@ -233,11 +233,12 @@ namespace Health.Clases
         {
             if (Idioma == "es-GT")
                 Grid.Culture = new CultureInfo("es-PE");
-            else if (Idioma == "es-GT")
+            else if (Idioma == "en-US")
                 Grid.Culture = new CultureInfo("en-US");
             Grid.DataSource = ds;
         }
 
+        
 
     }
 }

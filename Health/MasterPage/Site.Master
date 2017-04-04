@@ -9,6 +9,7 @@
     <link href="../css/application.css" rel="stylesheet" />
     <link href="../css/messageAlert.css" rel="stylesheet" />
     <link href="../css/Utiles.css" rel="stylesheet" />
+    <link href="../css/Propios.css" rel="stylesheet" />
     <link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -25,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="../sweetalert-master/dist/sweetalert.css" />
     <link href="../css/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../css/datatables/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/datatables/jquery-ui.css" />
+    <link href="../css/datatables/jquery-ui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function ShowPopup(titulo, message, type, textBt) {
         swal({
@@ -35,14 +36,14 @@
             confirmButtonText: textBt
         });
         };
-   </script>
+    </script>
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="logo">
-        <img src="../Imagenes/LOGO.png" width="225px" height="80px" />
-    </div>
+            <img id="ImgLogoClinica" runat="server" src="~/Imagenes/LOGO.png" width="225" height="80" />
+        </div>
         <nav runat="server" id="sidebar" class="sidebar nav-collapse collapse">
             <ul id="side-nav" class="side-nav">
                 <li class="">
@@ -67,7 +68,11 @@
         </nav>    <div class="wrap">
         <header class="page-header">
             <div class="navbar">
+                
                 <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <h2><asp:Label runat="server" ID="LblNomClinica"></asp:Label></h2>
+                    </li>
                     <li class="dropdown" runat="server" id="liMensajes">
                         <a href="#" title="Messages" id="messages"
                            class="dropdown-toggle"
@@ -232,6 +237,14 @@
             </div>
         </header>        
         <div>
+            <asp:UpdateProgress ID="upUpdateProgressFlotante" runat="server" DisplayAfter="3" DynamicLayout="false">
+                <ProgressTemplate>
+                    <div class="Transparencia"></div>
+                    <div class="UpdateProgressFlotante">
+                        <asp:Image ID="imgUpdateProgressFlotante"  ImageUrl="~/Imagenes/loading.gif" runat="server" />
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         </div>
         <div class="loader-wrap hiding hide">

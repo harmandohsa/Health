@@ -5,6 +5,7 @@ using System.Data;
 using System.Globalization;
 using System.Threading;
 using System.Web;
+using System.Web.UI;
 
 namespace Health.WebForms
 {
@@ -97,11 +98,11 @@ namespace Health.WebForms
                 DsDatosUsuario.Clear();
                 if (TxtPassActual.Value != Clave)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "10") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "35") + "','error','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "10") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "35") + "','error','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
                 }
                 else if (TxtPassNueva.Value != TxtPassConfNueva.Value)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "10") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "36") + "','error','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "10") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "36") + "','error','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
                 }
                 else
                 {
@@ -114,7 +115,7 @@ namespace Health.WebForms
                     else
                     {
                         ClUsuario.CambiaClave(Session["Usuario"].ToString(), ClUtilitarios.Encrypt(TxtPassNueva.Value, true), 0);
-                        ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "40") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "40") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
                     }
                         
                 }

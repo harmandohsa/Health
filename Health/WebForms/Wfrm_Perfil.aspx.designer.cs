@@ -343,7 +343,7 @@ namespace Health.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile TxtFotoPerfil;
+        protected global::Telerik.Web.UI.RadAsyncUpload TxtFotoPerfil;
         
         /// <summary>
         /// LblFotoTitulo control.
@@ -361,7 +361,7 @@ namespace Health.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile TxtFotoTitulo;
+        protected global::Telerik.Web.UI.RadAsyncUpload TxtFotoTitulo;
         
         /// <summary>
         /// BtnGrabar control.
@@ -407,6 +407,15 @@ namespace Health.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblNoErrorMsg;
+        
+        /// <summary>
+        /// RadCodeBlock1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
         
         /// <summary>
         /// TxtCorreoOriginal control.

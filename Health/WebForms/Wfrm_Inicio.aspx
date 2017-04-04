@@ -28,7 +28,7 @@
                                     </header>
                                     <div style="padding-bottom:1em;"></div>
                                     <div class="body no-margin">
-                                        <a runat="server" id="BgClinica" class="badge1"><asp:ImageButton runat="server" ID="ImgClinica" ImageUrl="~/Imagenes/hospital.png" /></a>
+                                        <a runat="server" id="BgClinica" class="badge1"><asp:ImageButton PostBackUrl="~/WebForms/Wfrm_Clinica.aspx" runat="server" ID="ImgClinica" ImageUrl="~/Imagenes/hospital.png" /></a>
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>
                                         <a runat="server" id="BgDoctor" class="badge1"><asp:ImageButton runat="server" ID="ImgDoctor" ImageUrl="~/Imagenes/doctor.png" /></a>
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>

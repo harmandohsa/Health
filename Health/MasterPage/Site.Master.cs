@@ -9,11 +9,13 @@ namespace Health.MasterPage
         Cl_Persona ClPersona;
         Cl_Traductor ClTraductor;
         Cl_Usuario ClUsuario;
+        Cl_Clinica ClClinica;
         protected void Page_Load(object sender, EventArgs e)
         {
             ClPersona = new Cl_Persona();
             ClTraductor = new Cl_Traductor();
             ClUsuario = new Cl_Usuario();
+            ClClinica = new Cl_Clinica();
 
             if (!IsPostBack)
             {
@@ -28,10 +30,26 @@ namespace Health.MasterPage
                         ImgPerfil.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
                     }
                     DsArchivo.Clear();
+
+                    if (Convert.ToInt32(Session["ClinicaId"]) > 0)
+                    {
+                        DataSet DsLogoClinica = new DataSet();
+                        DsLogoClinica = ClClinica.Get_Clinca(Convert.ToInt32(Session["ClinicaId"]));
+                        LblNomClinica.Text = DsLogoClinica.Tables["DATOS"].Rows[0]["Nombre"].ToString();
+                        if (DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"].ToString() != "")
+                        {
+                            byte[] bytes = (byte[])DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"];
+                            ImgLogoClinica.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
+                        }
+                        DsLogoClinica.Clear();
+                    }
+
+                    
+
                     Permisos(Convert.ToInt32(Session["UsuarioId"]));
                 }
                 Traduce();
-                
+                VerificaClnica();
             }
         }
 
@@ -41,6 +59,19 @@ namespace Health.MasterPage
             lblMenuCambioClave.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "30");
             lblMenuClinica.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "82");
             lblMenuUsuarios.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "84") + "s";
+        }
+
+        void VerificaClnica()
+        {
+            int HayClinica = ClClinica.TieneClinica(Convert.ToInt32(Session["ClienteId"]));
+            if (HayClinica == 0)
+            {
+                sidebar.Visible = false;
+            }
+            else
+            {
+                sidebar.Visible = true;
+            }
         }
 
         public void Permisos(int UsuarioId)

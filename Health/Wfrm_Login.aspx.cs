@@ -87,6 +87,9 @@ namespace Health
                     Session["CntClinica"] = DatosUsuario.Tables["Datos"].Rows[0]["CntClinica"].ToString();
                     Session["CntDoctor"] = DatosUsuario.Tables["Datos"].Rows[0]["CntDoctor"].ToString();
                     Session["ClienteId"] = DatosUsuario.Tables["Datos"].Rows[0]["ClienteId"].ToString();
+                    
+
+
                     if (DatosUsuario.Tables["Datos"].Rows[0]["Cambio_Clave"].ToString() == "1")
                     {
                         DatosUsuario.Clear();
@@ -95,6 +98,17 @@ namespace Health
                     else
                     {
                         DatosUsuario.Clear();
+                        DataSet DsRelacion_Usuario_Clinica = ClUsuario.Get_Relacion_Clinica_Usuario(Convert.ToInt32(Session["UsuarioId"]));
+                        int CntClinicasUsuario = DsRelacion_Usuario_Clinica.Tables["Datos"].Rows.Count;
+                        if (CntClinicasUsuario == 0)
+                        {
+                            Session["ClinicaId"] = 0;
+                        }
+                        else if (CntClinicasUsuario == 1)
+                        {
+                            Session["ClinicaId"] = DsRelacion_Usuario_Clinica.Tables["Datos"].Rows[0]["ClinicaId"].ToString();
+                        }
+                        DsRelacion_Usuario_Clinica.Clear();
                         Response.Redirect("~/WebForms/Wfrm_Inicio.aspx");
                     }
                         

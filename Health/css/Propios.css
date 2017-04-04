@@ -1,0 +1,121 @@
+﻿.htmllogin { 
+  background: url(../imagenes/Wallpaper.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo-name {
+  /*color: #e6e6e6;*/
+  color: #FFFFFF;
+  font-size: 80px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  margin-bottom: 100px;
+}
+
+.middle-box {
+  max-width: 1500px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+#outPopUp{
+     position:absolute;
+     width:300px;
+     height:200px;
+     z-index:15;
+     top:50%;
+     left:50%;
+     margin:-100px 0 0 -150px;
+     background:red;
+}
+
+input:required:invalid, input:focus:invalid {
+    background-image: url(../Imagenes/required.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+    -moz-box-shadow: none;
+  }
+
+input:required:valid {
+    background-image: url(../Imagenes/Ok.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+ }
+
+.Transparencia
+ {
+      vertical-align:middle;
+      position: fixed;
+      left:0px;
+      top:0px;
+      Z-INDEX:101;
+      width: 4000px;
+	  height:1000px; 
+      background-color:#000000;
+      opacity: 0.4;
+      filter:  alpha(opacity=40);
+     /* background: rgba(0, 0, 0, 0.2);    */
+ }
+
+.UpdateProgressFlotante 
+ {
+	vertical-align:middle;
+    align-content:center;
+	position:absolute;	
+    left: calc(50% - 3rem);
+    top: calc(44% - 1rem);
+    Z-INDEX:101;
+	background: #f3f3f4;
+	border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+ }
+
+.centradolabel
+{
+    padding-top:0.5em;
+}
+
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 0px 5px 0px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0px;
+}
+
+.ScrollStyle
+{
+     height: 100%;
+            width: 200px;
+            overflow: auto;
+}
+
+.FontStyle {
+    font-family:'Open Sans';
+}
+
+.Container
+{
+    text-align: center;
+}
+
+    .Container:before
+    {
+        content: '';
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+.Content
+{
+    display: inline-block;
+    vertical-align: middle;
+}

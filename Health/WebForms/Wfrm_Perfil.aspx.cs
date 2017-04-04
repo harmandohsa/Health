@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Health.WebForms
@@ -101,20 +102,20 @@ namespace Health.WebForms
                     ClUsuario.Update_DatosUsuario(Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value);
                     ClUsuario.Create_Permisos(Convert.ToInt32(Session["UsuarioId"]), 1);
                     Session["PersonaId"] = PersonaId;
-                    if (TxtFotoPerfil.PostedFile.ContentLength != 0 )
+                    if (TxtFotoPerfil.UploadedFiles.Count > 0)
                     {
-                        Stream fileStream = TxtFotoPerfil.PostedFile.InputStream;
+                        Stream fileStream = TxtFotoPerfil.UploadedFiles[0].InputStream;
                         byte[] attachmentBytes = new byte[fileStream.Length];
                         fileStream.Read(attachmentBytes, 0, Convert.ToInt32(fileStream.Length));
-                        ClPersona.Insert_Foto_Perfil(PersonaId, attachmentBytes, TxtFotoPerfil.PostedFile.ContentType, TxtFotoPerfil.PostedFile.FileName);
+                        ClPersona.Insert_Foto_Perfil(PersonaId, attachmentBytes, TxtFotoPerfil.UploadedFiles[0].ContentType, TxtFotoPerfil.UploadedFiles[0].FileName);
                         fileStream.Close();
                     }
-                    if (TxtFotoTitulo.PostedFile.ContentLength != 0)
+                    if (TxtFotoTitulo.UploadedFiles.Count > 0)
                     {
-                        Stream fileStream = TxtFotoTitulo.PostedFile.InputStream;
+                        Stream fileStream = TxtFotoTitulo.UploadedFiles[0].InputStream;
                         byte[] attachmentBytes = new byte[fileStream.Length];
                         fileStream.Read(attachmentBytes, 0, Convert.ToInt32(fileStream.Length));
-                        ClPersona.Insert_Foto_Titulo(PersonaId, attachmentBytes, TxtFotoTitulo.PostedFile.ContentType, TxtFotoTitulo.PostedFile.FileName);
+                        ClPersona.Insert_Foto_Titulo(PersonaId, attachmentBytes, TxtFotoTitulo.UploadedFiles[0].ContentType, TxtFotoTitulo.UploadedFiles[0].FileName);
                         fileStream.Close();
                     }
                     Response.Redirect("~/WebForms/Wfrm_Inicio.aspx");
@@ -126,24 +127,23 @@ namespace Health.WebForms
                         UniversidadId = Convert.ToInt32(CboUniverisidad.SelectedValue);
                     ClPersona.Update_Persona(Convert.ToInt32(Session["PersonaId"]), Convert.ToInt32(CboAlias.SelectedValue), TxtNombres.Value, TxtApellidos.Value, Convert.ToInt32(CboAlias.SelectedValue), TxtIdNo.Value, TxtDireccion.Value, Convert.ToInt32(CboMunicipio.SelectedValue), TxtTelCasa.Value, TxtTelMovil.Value, UniversidadId, TxtNoCol.Value, TxtTitulo.Value, Convert.ToDateTime(TxtFecNac.Value));
                     ClUsuario.Update_DatosUsuario(Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value);
-                    if (TxtFotoPerfil.PostedFile.ContentLength != 0)
+                    if (TxtFotoPerfil.UploadedFiles.Count > 0)
                     {
-                        Stream fileStream = TxtFotoPerfil.PostedFile.InputStream;
+                        Stream fileStream = TxtFotoPerfil.UploadedFiles[0].InputStream;
                         byte[] attachmentBytes = new byte[fileStream.Length];
                         fileStream.Read(attachmentBytes, 0, Convert.ToInt32(fileStream.Length));
-                        ClPersona.Insert_Foto_Perfil(Convert.ToInt32(Session["PersonaId"]), attachmentBytes, TxtFotoPerfil.PostedFile.ContentType, TxtFotoPerfil.PostedFile.FileName);
+                        ClPersona.Insert_Foto_Perfil(Convert.ToInt32(Session["PersonaId"]), attachmentBytes, TxtFotoPerfil.UploadedFiles[0].ContentType, TxtFotoPerfil.UploadedFiles[0].FileName);
                         fileStream.Close();
                     }
-                    if (TxtFotoTitulo.PostedFile.ContentLength != 0)
+                    if (TxtFotoTitulo.UploadedFiles.Count > 0)
                     {
-                        Stream fileStream = TxtFotoTitulo.PostedFile.InputStream;
+                        Stream fileStream = TxtFotoTitulo.UploadedFiles[0].InputStream;
                         byte[] attachmentBytes = new byte[fileStream.Length];
                         fileStream.Read(attachmentBytes, 0, Convert.ToInt32(fileStream.Length));
-                        ClPersona.Insert_Foto_Titulo(Convert.ToInt32(Session["PersonaId"]), attachmentBytes, TxtFotoTitulo.PostedFile.ContentType, TxtFotoTitulo.PostedFile.FileName);
+                        ClPersona.Insert_Foto_Titulo(Convert.ToInt32(Session["PersonaId"]), attachmentBytes, TxtFotoTitulo.UploadedFiles[0].ContentType, TxtFotoTitulo.UploadedFiles[0].FileName);
                         fileStream.Close();
                     }
-                    DivNoErr.Visible = true;
-                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CloseWindow", "ShowPopup('" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
                 }
             }
         }
@@ -314,6 +314,13 @@ namespace Health.WebForms
             CboMunicipio.Items.Clear();
             CboDepartamento.Items.Clear();
             CboUniverisidad.Items.Clear();
+            BtnGrabar.Attributes["data-loading-text"] = ClTraductor.BuscaString(Session["Idioma"].ToString(), "94");
+            TxtFotoPerfil.Localization.Select = ClTraductor.BuscaString(Session["Idioma"].ToString(), "96");
+            TxtFotoPerfil.Localization.Cancel = ClTraductor.BuscaString(Session["Idioma"].ToString(), "98");
+            TxtFotoPerfil.Localization.Remove = ClTraductor.BuscaString(Session["Idioma"].ToString(), "97");
+            TxtFotoTitulo.Localization.Select = ClTraductor.BuscaString(Session["Idioma"].ToString(), "96");
+            TxtFotoTitulo.Localization.Cancel = ClTraductor.BuscaString(Session["Idioma"].ToString(), "98");
+            TxtFotoTitulo.Localization.Remove = ClTraductor.BuscaString(Session["Idioma"].ToString(), "97");
         }
 
         bool Valida()
@@ -420,7 +427,8 @@ namespace Health.WebForms
                     LblMensaje = LblMensaje + ", " + ClTraductor.BuscaString(Session["Idioma"].ToString(), "72");
                 HayError = true;
             }
-            if (TxtFotoPerfil.PostedFile.ContentLength > 2097152)
+            
+            if ((TxtFotoPerfil.UploadedFiles.Count > 0) && (TxtFotoPerfil.MaxFileSize > 2097152))
             {
                 if (LblMensaje == "")
                     LblMensaje = ClTraductor.BuscaString(Session["Idioma"].ToString(), "74");
@@ -428,7 +436,7 @@ namespace Health.WebForms
                     LblMensaje = LblMensaje + ", " + ClTraductor.BuscaString(Session["Idioma"].ToString(), "74");
                 HayError = true;
             }
-            if (TxtFotoTitulo.PostedFile.ContentLength > 2097152)
+            if ((TxtFotoTitulo.UploadedFiles.Count > 0) && (TxtFotoTitulo.MaxFileSize > 2097152))
             {
                 if (LblMensaje == "")
                     LblMensaje = ClTraductor.BuscaString(Session["Idioma"].ToString(), "75");

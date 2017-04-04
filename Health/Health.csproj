@@ -240,6 +240,14 @@
     <Content Include="App_Data\RadCaptcha\X.wav" />
     <Content Include="App_Data\RadCaptcha\Y.wav" />
     <Content Include="App_Data\RadCaptcha\Z.wav" />
+    <Content Include="App_GlobalResources\RadGrid.Main.es-PE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main.es-PE2.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\RadGrid.Main.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main2.designer.cs</LastGenOutput>
+    </Content>
     <Content Include="assets\apps\css\inbox.css" />
     <Content Include="assets\apps\css\inbox.min.css" />
     <Content Include="assets\apps\css\ticket.css" />
@@ -5600,6 +5608,7 @@
     <Content Include="css\datatables\jquery.dataTables.min.css" />
     <Content Include="css\datatables\jquery.dataTables_themeroller.css" />
     <Content Include="css\messageAlert.css" />
+    <Content Include="css\Propios.css" />
     <Content Include="css\Utiles.css" />
     <Content Include="DataTable-EN.txt" />
     <Content Include="DataTable-ES.txt" />
@@ -5611,9 +5620,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagenes\cita.png" />
+    <Content Include="Imagenes\doctor.png" />
+    <Content Include="Imagenes\editar.png" />
+    <Content Include="Imagenes\empleado.png" />
     <Content Include="Imagenes\hospital.png" />
     <Content Include="Imagenes\loader.gif" />
     <Content Include="Imagenes\LOGO.png" />
+    <Content Include="Imagenes\paciente.png" />
+    <Content Include="Imagenes\QueryLogo.jpg" />
     <Content Include="Imagenes\SpainFlag.png" />
     <Content Include="Imagenes\USAFlag.png" />
     <Content Include="js\app.js" />
@@ -8908,6 +8923,21 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\RadGrid.Main.en-US.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadGrid.Main.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\RadGrid.Main.es-PE2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadGrid.Main.es-PE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\RadGrid.Main2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadGrid.Main.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -8921,6 +8951,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Clases\Cl_Catalogos.cs" />
     <Compile Include="Clases\Cl_Cliente.cs" />
+    <Compile Include="Clases\Cl_Clinica.cs" />
     <Compile Include="Clases\Cl_Persona.cs" />
     <Compile Include="Clases\Cl_Traductor.cs" />
     <Compile Include="Clases\Cl_Usuario.cs" />
@@ -9007,6 +9038,10 @@
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\RadGrid.Main.en-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main.en-US.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Idiomas\QHealth.en-US.resx" />
     <EmbeddedResource Include="Idiomas\QHealth.es-GT.resx" />
     <EmbeddedResource Include="Properties\licenses.licx" />
