@@ -8355,6 +8355,7 @@
     <Content Include="WebForms\Wfrm_Clinica.aspx" />
     <Content Include="WebForms\Wfrm_Inicio.aspx" />
     <Content Include="WebForms\Wfrm_Perfil.aspx" />
+    <Content Include="WebForms\Wfrm_Permisos.aspx" />
     <Content Include="WebForms\Wfrm_Usuarios.aspx" />
     <Content Include="Wfrm_Login.aspx" />
     <Content Include="js\json\emails.json" />
@@ -9018,6 +9019,13 @@
     <Compile Include="WebForms\Wfrm_Perfil.aspx.designer.cs">
       <DependentUpon>Wfrm_Perfil.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\Wfrm_Permisos.aspx.cs">
+      <DependentUpon>Wfrm_Permisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_Permisos.aspx.designer.cs">
+      <DependentUpon>Wfrm_Permisos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Wfrm_Usuarios.aspx.cs">
       <DependentUpon>Wfrm_Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -9069,7 +9077,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

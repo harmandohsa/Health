@@ -99,7 +99,7 @@ namespace Health.WebForms
                     ClPersona.Insert_Persona(PersonaId, Convert.ToInt32(CboAlias.SelectedValue), TxtNombres.Value, TxtApellidos.Value, Convert.ToInt32(CboGenero.SelectedValue), TxtIdNo.Value, TxtDireccion.Value, Convert.ToInt32(CboMunicipio.SelectedValue), TxtTelCasa.Value, TxtTelMovil.Value, UniversidadId, TxtNoCol.Value, TxtTitulo.Value, Convert.ToDateTime(TxtFecNac.Value));
                     Clcliente.Update_Estado_Fase_Cliente(Convert.ToInt32(Session["ClienteId"]));
                     ClUsuario.Actualiza_PersonaID_Usuario(PersonaId, Convert.ToInt32(Session["UsuarioId"]));
-                    ClUsuario.Update_DatosUsuario(Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value);
+                    ClUsuario.Update_DatosUsuario(1,Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value,0);
                     ClUsuario.Create_Permisos(Convert.ToInt32(Session["UsuarioId"]), 1);
                     Session["PersonaId"] = PersonaId;
                     if (TxtFotoPerfil.UploadedFiles.Count > 0)
@@ -126,7 +126,7 @@ namespace Health.WebForms
                     if (CboUniverisidad.SelectedIndex > 0)
                         UniversidadId = Convert.ToInt32(CboUniverisidad.SelectedValue);
                     ClPersona.Update_Persona(Convert.ToInt32(Session["PersonaId"]), Convert.ToInt32(CboAlias.SelectedValue), TxtNombres.Value, TxtApellidos.Value, Convert.ToInt32(CboAlias.SelectedValue), TxtIdNo.Value, TxtDireccion.Value, Convert.ToInt32(CboMunicipio.SelectedValue), TxtTelCasa.Value, TxtTelMovil.Value, UniversidadId, TxtNoCol.Value, TxtTitulo.Value, Convert.ToDateTime(TxtFecNac.Value));
-                    ClUsuario.Update_DatosUsuario(Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value);
+                    ClUsuario.Update_DatosUsuario(1,Convert.ToInt32(Session["UsuarioId"]), TxtCorreo.Value, TxtUsuario.Value,0);
                     if (TxtFotoPerfil.UploadedFiles.Count > 0)
                     {
                         Stream fileStream = TxtFotoPerfil.UploadedFiles[0].InputStream;

@@ -43,9 +43,6 @@ namespace Health.MasterPage
                         }
                         DsLogoClinica.Clear();
                     }
-
-                    
-
                     Permisos(Convert.ToInt32(Session["UsuarioId"]));
                 }
                 Traduce();
@@ -59,6 +56,7 @@ namespace Health.MasterPage
             lblMenuCambioClave.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "30");
             lblMenuClinica.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "82");
             lblMenuUsuarios.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "84") + "s";
+            lblMenuPermisos.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "99");
         }
 
         void VerificaClnica()
@@ -99,6 +97,11 @@ namespace Health.MasterPage
                         System.Web.UI.HtmlControls.HtmlGenericControl liMenuCambioClave;
                         liMenuCambioClave = (System.Web.UI.HtmlControls.HtmlGenericControl)FindControl("liMenuCambioClave");
                         liMenuCambioClave.Visible = true;
+                        break;
+                    case 5: //Clincas
+                        System.Web.UI.HtmlControls.HtmlGenericControl liMenuClinica;
+                        liMenuClinica = (System.Web.UI.HtmlControls.HtmlGenericControl)FindControl("liMenuClinica");
+                        liMenuClinica.Visible = true;
                         break;
                 }
             }

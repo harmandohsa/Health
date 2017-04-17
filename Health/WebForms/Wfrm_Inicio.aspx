@@ -32,7 +32,7 @@
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>
                                         <a runat="server" id="BgDoctor" class="badge1"><asp:ImageButton runat="server" ID="ImgDoctor" ImageUrl="~/Imagenes/doctor.png" /></a>
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>
-                                        <a runat="server" id="BgUsuarios" class="badge2"><asp:ImageButton runat="server" ID="ImgUsuario" ImageUrl="~/Imagenes/empleado.png" /></a>
+                                        <a runat="server" id="BgUsuarios" class="badge2"><asp:ImageButton PostBackUrl="~/WebForms/Wfrm_Usuarios.aspx" runat="server" ID="ImgUsuario" ImageUrl="~/Imagenes/empleado.png" /></a>
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>
                                         <a runat="server" id="BgPaciente" class="badge2"><asp:ImageButton runat="server" ID="ImgPaciente" ImageUrl="~/Imagenes/paciente.png" /></a>
                                         <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>

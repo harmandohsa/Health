@@ -123,6 +123,18 @@
   <data name="10" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="100" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="101" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="102" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="103" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="11" xml:space="preserve">
     <value>You must enter your password</value>
   </data>
@@ -410,5 +422,8 @@
   </data>
   <data name="98" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="99" xml:space="preserve">
+    <value>Permits</value>
   </data>
 </root>

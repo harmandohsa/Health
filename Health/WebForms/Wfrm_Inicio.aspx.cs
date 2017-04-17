@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 using Health.Clases;
+using System.Data;
 
 namespace Health.WebForms
 {
@@ -9,12 +10,14 @@ namespace Health.WebForms
         Cl_Traductor ClTraductor;
         Cl_Utilitarios ClUtilitarios;
         Cl_Clinica ClClinica;
+        Cl_Usuario ClUsuario;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             ClTraductor = new Cl_Traductor();
             ClUtilitarios = new Cl_Utilitarios();
             ClClinica = new Cl_Clinica();
+            ClUsuario = new Cl_Usuario();
 
             ImageButton ImgEng;
             ImgEng = (ImageButton)Master.FindControl("ImgEng");
@@ -34,9 +37,24 @@ namespace Health.WebForms
                 VerificaClnica();
                 BgClinica.Attributes.Add("data-badge", ClClinica.ClinicasDisponibles(Convert.ToInt32(Session["ClienteId"])).ToString());
                 BgDoctor.Attributes.Add("data-badge", "2");
-                BgUsuarios.Attributes.Add("data-badge", "3");
+                DataSet dsCntUsuarios = ClUsuario.Get_Usuarios(1, Convert.ToInt32(Session["ClienteId"]));
+                BgUsuarios.Attributes.Add("data-badge", dsCntUsuarios.Tables["DATOS"].Rows.Count.ToString());
+                dsCntUsuarios.Clear();
                 BgPaciente.Attributes.Add("data-badge", "4");
                 BgCita.Attributes.Add("data-badge", "5");
+                DataSet dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
+                if (Convert.ToInt32(dsPermisosUsuario.Tables["Datos"].Rows[0]["Consultar"]) == 0)
+                {
+                    ImgUsuario.Enabled = false;
+                }
+                dsPermisosUsuario.Clear();
+                DataSet dsPermisosClinica = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 5);
+                if (Convert.ToInt32(dsPermisosClinica.Tables["Datos"].Rows[0]["Consultar"]) == 0)
+                {
+                    ImgClinica.Enabled = false;
+                }
+                dsPermisosClinica.Clear();
+
             }
 
                 

@@ -109,16 +109,18 @@ namespace Health.Clases
             }
         }
 
-        public void Update_DatosUsuario(int UsuarioId, string Correo, string Usuario)
+        public void Update_DatosUsuario(int Tipo, int UsuarioId, string Correo, string Usuario, int Tipo_UsuarioId)
         {
             try
             {
                 cn.Open();
                 SqlCommand cmd = new SqlCommand("SP_Update_DatosUsuario", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Tipo", SqlDbType.Int).Value = Tipo;
                 cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
                 cmd.Parameters.Add("@Correo", SqlDbType.VarChar, 500).Value = Correo;
                 cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 500).Value = Usuario;
+                cmd.Parameters.Add("@Tipo_UsuarioId", SqlDbType.Int).Value = Tipo_UsuarioId;
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
@@ -231,7 +233,7 @@ namespace Health.Clases
             }
         }
 
-        public DataSet Get_Usuarios(int Tipo)
+        public DataSet Get_Usuarios(int Tipo, int ClienteId)
         {
             try
             {
@@ -241,6 +243,7 @@ namespace Health.Clases
                 SqlCommand cmd = new SqlCommand("Sp_Get_Usuarios", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Tipo", SqlDbType.Int).Value = Tipo;
+                cmd.Parameters.Add("@ClienteId", SqlDbType.Int).Value = ClienteId;
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(ds, "DATOS");
                 cn.Close();
@@ -316,6 +319,50 @@ namespace Health.Clases
             {
                 cn.Close();
                 return ds;
+            }
+        }
+
+        public DataSet Get_Roles_Usuario(int UsuarioId, string idioma)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Roles_Usuario", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = idioma;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
+
+        public void Actuliza_Rol_Usuario(int UsuarioId, int FormaId, int Permiso, int Actividad)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Actuliza_Rol_Usuario", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
+                cmd.Parameters.Add("@FormaId", SqlDbType.Int).Value = FormaId;
+                cmd.Parameters.Add("@Permiso", SqlDbType.Int).Value = Permiso;
+                cmd.Parameters.Add("@Actividad", SqlDbType.Int).Value = Actividad;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
             }
         }
     }

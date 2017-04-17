@@ -337,6 +337,33 @@ namespace Health.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputText TxtIdioma;
         
         /// <summary>
+        /// TxtCorreoAnt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCorreoAnt;
+        
+        /// <summary>
+        /// TxtUsuarioId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtUsuarioId;
+        
+        /// <summary>
+        /// TxtPersonaId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPersonaId;
+        
+        /// <summary>
         /// RadCodeBlock1 control.
         /// </summary>
         /// <remarks>
