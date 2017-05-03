@@ -10,7 +10,7 @@
 namespace Health.WebForms {
     
     
-    public partial class Wfrm_Perfil {
+    public partial class Wfrm_Doctor {
         
         /// <summary>
         /// LblSubTitulo control.
@@ -220,78 +220,6 @@ namespace Health.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtTelMovil;
         
         /// <summary>
-        /// LblPaisUni control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblPaisUni;
-        
-        /// <summary>
-        /// CboPaisUni control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CboPaisUni;
-        
-        /// <summary>
-        /// LblUniversidad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblUniversidad;
-        
-        /// <summary>
-        /// CboUniverisidad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CboUniverisidad;
-        
-        /// <summary>
-        /// LblNoColegiado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblNoColegiado;
-        
-        /// <summary>
-        /// TxtNoCol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtNoCol;
-        
-        /// <summary>
-        /// LblTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblTitulo;
-        
-        /// <summary>
-        /// TxtTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtTitulo;
-        
-        /// <summary>
         /// LblCorreo control.
         /// </summary>
         /// <remarks>
@@ -328,58 +256,22 @@ namespace Health.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtFecNac;
         
         /// <summary>
-        /// lblUsuario control.
+        /// lblTipoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTipoUsuario;
         
         /// <summary>
-        /// TxtUsuario control.
+        /// CboTipoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtUsuario;
-        
-        /// <summary>
-        /// LblFotoPerfil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblFotoPerfil;
-        
-        /// <summary>
-        /// TxtFotoPerfil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAsyncUpload TxtFotoPerfil;
-        
-        /// <summary>
-        /// LblFotoTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblFotoTitulo;
-        
-        /// <summary>
-        /// TxtFotoTitulo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAsyncUpload TxtFotoTitulo;
+        protected global::System.Web.UI.WebControls.DropDownList CboTipoUsuario;
         
         /// <summary>
         /// BtnGrabar control.
@@ -427,6 +319,51 @@ namespace Health.WebForms {
         protected global::System.Web.UI.WebControls.Label LblNoErrorMsg;
         
         /// <summary>
+        /// GrdDetalle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid GrdDetalle;
+        
+        /// <summary>
+        /// TxtIdioma control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtIdioma;
+        
+        /// <summary>
+        /// TxtCorreoAnt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtCorreoAnt;
+        
+        /// <summary>
+        /// TxtUsuarioId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtUsuarioId;
+        
+        /// <summary>
+        /// TxtPersonaId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtPersonaId;
+        
+        /// <summary>
         /// RadCodeBlock1 control.
         /// </summary>
         /// <remarks>
@@ -436,21 +373,30 @@ namespace Health.WebForms {
         protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
         
         /// <summary>
-        /// TxtCorreoOriginal control.
+        /// RadWindowManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCorreoOriginal;
+        protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
         
         /// <summary>
-        /// TxtUsuarioOriginal control.
+        /// RadWindow1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtUsuarioOriginal;
+        protected global::Telerik.Web.UI.RadWindow RadWindow1;
+        
+        /// <summary>
+        /// RadWindowDetalle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow RadWindowDetalle;
     }
 }

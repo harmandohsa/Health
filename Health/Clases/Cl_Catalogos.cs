@@ -8,7 +8,7 @@ namespace Health.Clases
     {
         SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["Conexion"]);
         DataSet ds = new DataSet();
-        public DataSet Catalogo_Alias(string Idioma)
+        public DataSet Catalogo_Alias(string Idioma, int Tipo)
         {
             try
             {
@@ -17,6 +17,7 @@ namespace Health.Clases
                 cn.Open();
                 SqlCommand cmd = new SqlCommand("SP_Catalogo_Alias", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Tipo", SqlDbType.Int).Value = Tipo;
                 cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = Idioma;
                 SqlDataAdapter  adp = new SqlDataAdapter(cmd);
                 adp.Fill(ds, "DATOS");
@@ -160,6 +161,29 @@ namespace Health.Clases
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = Idioma;
                 cmd.Parameters.Add("@Tipo", SqlDbType.Int).Value = Tipo;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
+
+        public DataSet Catalogo_Especialidades(string Idioma)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Catalogo_Especialidades", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = Idioma;
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(ds, "DATOS");
                 cn.Close();

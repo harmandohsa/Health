@@ -1,12 +1,12 @@
 ﻿using Health.Clases;
 using System;
 using System.Data;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace Health.WebForms
 {
-    public partial class Wfrm_Usuarios : System.Web.UI.Page
+    public partial class Wfrm_Doctor : System.Web.UI.Page
     {
         Cl_Traductor ClTraductor;
         Cl_Catalogos ClCatalogos;
@@ -14,6 +14,7 @@ namespace Health.WebForms
         Cl_Utilitarios ClUtilitarios;
         Cl_Persona ClPersona;
         Cl_Clinica ClClinca;
+        Cl_Cliente ClCliente;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +24,7 @@ namespace Health.WebForms
             ClUtilitarios = new Cl_Utilitarios();
             ClPersona = new Cl_Persona();
             ClClinca = new Cl_Clinica();
+            ClCliente = new Cl_Cliente();
 
             ImageButton ImgEng;
             ImgEng = (ImageButton)Master.FindControl("ImgEng");
@@ -44,7 +46,7 @@ namespace Health.WebForms
             }
             else if (!IsPostBack)
             {
-                
+
                 DataSet dsPermisos = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
                 if (Convert.ToInt32(dsPermisos.Tables["Datos"].Rows[0]["Editar"]) == 0)
                 {
@@ -63,10 +65,9 @@ namespace Health.WebForms
                 DataSet DsClincas = ClClinca.Get_Clincas(Convert.ToInt32(Session["ClienteId"]));
                 if (DsClincas.Tables["Datos"].Rows.Count == 1)
                     GrdDetalle.Columns[7].Visible = false;
+                
             }
             TxtIdioma.Value = Session["Idioma"].ToString();
-
-
         }
 
         private void GrdDetalle_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
@@ -78,9 +79,9 @@ namespace Health.WebForms
                 CboAlias.SelectedValue = dsUsuario.Tables["Datos"].Rows[0]["AliasIid"].ToString();
                 CboAlias.SelectedItem.Text = dsUsuario.Tables["Datos"].Rows[0]["aliasper"].ToString();
                 TxtNombres.Value = dsUsuario.Tables["Datos"].Rows[0]["Nombres"].ToString();
-                TxtApellidos.Value= dsUsuario.Tables["Datos"].Rows[0]["Apellidos"].ToString();
-                CboGenero.SelectedValue  = dsUsuario.Tables["Datos"].Rows[0]["GeneroId"].ToString();
-                CboGenero.SelectedItem.Text  = dsUsuario.Tables["Datos"].Rows[0]["generoper"].ToString();
+                TxtApellidos.Value = dsUsuario.Tables["Datos"].Rows[0]["Apellidos"].ToString();
+                CboGenero.SelectedValue = dsUsuario.Tables["Datos"].Rows[0]["GeneroId"].ToString();
+                CboGenero.SelectedItem.Text = dsUsuario.Tables["Datos"].Rows[0]["generoper"].ToString();
                 CboPais.SelectedValue = dsUsuario.Tables["Datos"].Rows[0]["PaisId"].ToString();
                 CboPais.SelectedItem.Text = dsUsuario.Tables["Datos"].Rows[0]["paisper"].ToString();
                 CboDepartamento.ClearSelection();
@@ -110,11 +111,21 @@ namespace Health.WebForms
 
                 dsUsuario.Clear();
             }
+            else if (e.CommandName == "CmdEspecialidades")
+            {
+                RadWindowDetalle.Title = ClTraductor.BuscaString(Session["Idioma"].ToString(), "104");
+                RadWindowDetalle.NavigateUrl = "~/WebForms/Wfrm_Especialidades.aspx?Benutzer=" + HttpUtility.UrlEncode(ClUtilitarios.Encrypt(e.Item.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["UsuarioId"].ToString(), true)) +  "";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "function f(){$find('" + RadWindowDetalle.ClientID + "').show();Sys.Application.remove_load(f);}Sys.Application.add_load(f);", true);
+            }
         }
 
         private void GrdDetalle_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            ClUtilitarios.LlenaGrid(ClUsuario.Get_Usuarios(2,Convert.ToInt32(Session["ClienteId"])), GrdDetalle, Session["Idioma"].ToString());
+            ClUtilitarios.LlenaGrid(ClUsuario.Get_Usuarios(3, Convert.ToInt32(Session["ClienteId"])), GrdDetalle, Session["Idioma"].ToString());
+            int CntDoc = ClCliente.GetCantidadDoctores(Convert.ToInt32(Session["ClienteId"]));
+            int items = GrdDetalle.Items.Count;
+            if (items >= CntDoc)
+                BtnGrabar.Visible = false;  
         }
 
         private void BtnGrabar_Click(object sender, EventArgs e)
@@ -149,7 +160,7 @@ namespace Health.WebForms
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "ShowPopup('', '" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "76") + "','success','" + ClTraductor.BuscaString(Session["Idioma"].ToString(), "9") + "');", true);
                     GrdDetalle.Rebind();
                 }
-                
+
             }
         }
 
@@ -253,7 +264,7 @@ namespace Health.WebForms
                     LblMensaje = LblMensaje + ", " + ClTraductor.BuscaString(Session["Idioma"].ToString(), "69");
                 HayError = true;
             }
-            
+
             if (TxtFecNac.Value == "")
             {
                 if (LblMensaje == "")
@@ -350,7 +361,7 @@ namespace Health.WebForms
         {
             DivErrr.Visible = false;
             DivNoErr.Visible = false;
-            LblSubTitulo.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "84") + "s";
+            LblSubTitulo.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "104");
             LblAlias.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "42");
             LblNombres.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "43");
             LblApellidos.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "44");
@@ -368,13 +379,13 @@ namespace Health.WebForms
             lblTipoUsuario.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "89");
 
             //Combos
-            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Alias(Session["Idioma"].ToString(),1), CboAlias, "Id", "Datos");
+            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Alias(Session["Idioma"].ToString(),2), CboAlias, "Id", "Datos");
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Genero(Session["Idioma"].ToString()), CboGenero, "Id", "Datos");
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Pais(Session["Idioma"].ToString()), CboPais, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboPais, ClTraductor.BuscaString(Session["Idioma"].ToString(), "48"), Session["Idioma"].ToString());
             CboMunicipio.Items.Clear();
             CboDepartamento.Items.Clear();
-            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_TipoUsuario(Session["Idioma"].ToString(),1), CboTipoUsuario, "Id", "Datos");
+            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_TipoUsuario(Session["Idioma"].ToString(), 2), CboTipoUsuario, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboTipoUsuario, ClTraductor.BuscaString(Session["Idioma"].ToString(), "89"), Session["Idioma"].ToString());
             TxtIdioma.Value = Session["Idioma"].ToString();
             GrdDetalle.Columns[2].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "43");
@@ -382,6 +393,7 @@ namespace Health.WebForms
             GrdDetalle.Columns[4].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "59");
             GrdDetalle.Columns[5].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "89");
             GrdDetalle.Columns[6].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "93");
+            GrdDetalle.Columns[8].HeaderText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "105");
             GrdDetalle.Rebind();
             BtnGrabar.Attributes["data-loading-text"] = ClTraductor.BuscaString(Session["Idioma"].ToString(), "94");
         }

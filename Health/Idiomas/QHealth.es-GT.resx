@@ -135,6 +135,15 @@
   <data name="103" xml:space="preserve">
     <value>Borrar</value>
   </data>
+  <data name="104" xml:space="preserve">
+    <value>Doctores</value>
+  </data>
+  <data name="105" xml:space="preserve">
+    <value>Especialidades</value>
+  </data>
+  <data name="106" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
   <data name="11" xml:space="preserve">
     <value>Debe ingesar su clave</value>
   </data>

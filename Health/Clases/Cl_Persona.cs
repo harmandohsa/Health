@@ -104,7 +104,7 @@ namespace Health.Clases
             }
         }
 
-        public DataSet Get_Datos_Persona(int PersonaId)
+        public DataSet Get_Datos_Persona(int PersonaId, string Idioma)
         {
             try
             {
@@ -114,6 +114,7 @@ namespace Health.Clases
                 SqlCommand cmd = new SqlCommand("SP_Get_Datos_Persona", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                cmd.Parameters.Add("@idioma", SqlDbType.VarChar, 200).Value = Idioma;
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 adp.Fill(ds, "DATOS");
                 cn.Close();
@@ -151,6 +152,24 @@ namespace Health.Clases
                 cmd.Parameters.Add("@Colegiado", SqlDbType.VarChar, 500).Value = NoColegiado;
                 cmd.Parameters.Add("@Titulo ", SqlDbType.VarChar, 500).Value = Titulo;
                 cmd.Parameters.Add("@Fecha_Nac ", SqlDbType.Date).Value = Fecha_Nacimiento;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+            }
+        }
+
+        public void Insert_Especialidad(int PersonaId, int EspecialidadId)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Insert_Especialidad", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                cmd.Parameters.Add("@EspecialidadId", SqlDbType.Int).Value = EspecialidadId;
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }

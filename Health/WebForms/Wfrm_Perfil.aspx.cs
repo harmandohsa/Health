@@ -36,6 +36,7 @@ namespace Health.WebForms
             CboPais.SelectedIndexChanged += CboPais_SelectedIndexChanged;
             CboDepartamento.SelectedIndexChanged += CboDepartamento_SelectedIndexChanged;
             BtnGrabar.Click += BtnGrabar_Click;
+            CboPaisUni.SelectedIndexChanged += CboPaisUni_SelectedIndexChanged1;
 
             if (Session["UsuarioId"] == null)
             {
@@ -82,6 +83,20 @@ namespace Health.WebForms
                     }
                     dsPermisos.Clear();
                 }
+            }
+        }
+
+        private void CboPaisUni_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            if (CboPaisUni.SelectedIndex != 0)
+            {
+                ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Universidad(Session["Idioma"].ToString(), Convert.ToInt32(CboPaisUni.SelectedValue)), CboUniverisidad, "Id", "Datos");
+                ClUtilitarios.AgregarSeleccioneCombo(CboUniverisidad, ClTraductor.BuscaString(Session["Idioma"].ToString(), "53"), Session["Idioma"].ToString());
+            }
+            else
+            {
+                CboUniverisidad.Items.Clear();
+                CboUniverisidad.ClearSelection();
             }
         }
 
@@ -180,7 +195,7 @@ namespace Health.WebForms
 
         void CargaDatosPersona(int PersonaId)
         {
-            DataSet DsDatosPersona = ClPersona.Get_Datos_Persona(PersonaId);
+            DataSet DsDatosPersona = ClPersona.Get_Datos_Persona(PersonaId, Session["Idioma"].ToString());
             CboAlias.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["AliasIid"].ToString();
             CboGenero.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["GeneroId"].ToString();
             if (Session["Idioma"].ToString() == "es-GT")
@@ -197,11 +212,14 @@ namespace Health.WebForms
             TxtApellidos.Value = DsDatosPersona.Tables["Datos"].Rows[0]["Apellidos"].ToString();
             TxtIdNo.Value = DsDatosPersona.Tables["Datos"].Rows[0]["No_Identificacion"].ToString();
             TxtDireccion.Value = DsDatosPersona.Tables["Datos"].Rows[0]["Direccion"].ToString();
-            CboPais.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["PaisDireccion"].ToString();
-            CboPais.Text = DsDatosPersona.Tables["Datos"].Rows[0]["Pais"].ToString();
+            CboPais.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["PaisDireccionId"].ToString();
+            CboPais.Text = DsDatosPersona.Tables["Datos"].Rows[0]["PaisDirec"].ToString();
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Departamento(Session["Idioma"].ToString(), Convert.ToInt32(CboPais.SelectedValue)), CboDepartamento, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboDepartamento, ClTraductor.BuscaString(Session["Idioma"].ToString(), "49"), Session["Idioma"].ToString());
-            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Universidad(Session["Idioma"].ToString(), Convert.ToInt32(CboPais.SelectedValue)), CboUniverisidad, "Id", "Datos");
+
+            CboPaisUni.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["PaisUniId"].ToString();
+            CboPaisUni.Text = DsDatosPersona.Tables["Datos"].Rows[0]["PaisUni"].ToString();
+            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Universidad(Session["Idioma"].ToString(), Convert.ToInt32(CboPaisUni.SelectedValue)), CboUniverisidad, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboUniverisidad, ClTraductor.BuscaString(Session["Idioma"].ToString(), "53"), Session["Idioma"].ToString());
             CboDepartamento.SelectedValue = DsDatosPersona.Tables["Datos"].Rows[0]["DepartamentoId"].ToString();
             CboDepartamento.Text = DsDatosPersona.Tables["Datos"].Rows[0]["Departamento"].ToString();
@@ -253,8 +271,7 @@ namespace Health.WebForms
                 CboMunicipio.Items.Clear();
                 ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Departamento(Session["Idioma"].ToString(), Convert.ToInt32(CboPais.SelectedValue)), CboDepartamento, "Id", "Datos");
                 ClUtilitarios.AgregarSeleccioneCombo(CboDepartamento, ClTraductor.BuscaString(Session["Idioma"].ToString(), "49"), Session["Idioma"].ToString());
-                ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Universidad(Session["Idioma"].ToString(), Convert.ToInt32(CboPais.SelectedValue)), CboUniverisidad, "Id", "Datos");
-                ClUtilitarios.AgregarSeleccioneCombo(CboUniverisidad, ClTraductor.BuscaString(Session["Idioma"].ToString(), "53"), Session["Idioma"].ToString());
+                
             }
             else
             {
@@ -262,8 +279,7 @@ namespace Health.WebForms
                 CboMunicipio.ClearSelection();
                 CboDepartamento.Items.Clear();
                 CboMunicipio.Items.Clear();
-                CboUniverisidad.Items.Clear();
-                CboUniverisidad.ClearSelection();
+                
             }
             
         }
@@ -305,14 +321,17 @@ namespace Health.WebForms
             LblFecNac.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "60");
             BtnGrabar.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "71");
             lblUsuario.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "1");
+            LblPaisUni.InnerText = ClTraductor.BuscaString(Session["Idioma"].ToString(), "48") + " " + ClTraductor.BuscaString(Session["Idioma"].ToString(), "53");
 
             //Combos
-            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Alias(Session["Idioma"].ToString()), CboAlias, "Id", "Datos");
+            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Alias(Session["Idioma"].ToString(),1), CboAlias, "Id", "Datos");
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Genero(Session["Idioma"].ToString()), CboGenero, "Id", "Datos");
             ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Pais(Session["Idioma"].ToString()), CboPais, "Id", "Datos");
             ClUtilitarios.AgregarSeleccioneCombo(CboPais, ClTraductor.BuscaString(Session["Idioma"].ToString(), "48"), Session["Idioma"].ToString());
             CboMunicipio.Items.Clear();
             CboDepartamento.Items.Clear();
+            ClUtilitarios.Fill_DropDownAsp(ClCatalogos.Catalogo_Pais(Session["Idioma"].ToString()), CboPaisUni, "Id", "Datos");
+            ClUtilitarios.AgregarSeleccioneCombo(CboPaisUni, ClTraductor.BuscaString(Session["Idioma"].ToString(), "48"), Session["Idioma"].ToString());
             CboUniverisidad.Items.Clear();
             BtnGrabar.Attributes["data-loading-text"] = ClTraductor.BuscaString(Session["Idioma"].ToString(), "94");
             TxtFotoPerfil.Localization.Select = ClTraductor.BuscaString(Session["Idioma"].ToString(), "96");
