@@ -9,8 +9,6 @@ namespace Health.Clases
         SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["Conexion"]);
         DataSet ds = new DataSet();
 
-        string b = "";
-
         public DataSet GetDatosCliente(int ClienteId)
         {
             try
