@@ -8,7 +8,7 @@ namespace Health.Clases
     {
         SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["Conexion"]);
         DataSet ds = new DataSet();
-        string a = "";
+
         public DataSet GetDatosCliente(int ClienteId)
         {
             try
@@ -46,6 +46,27 @@ namespace Health.Clases
             catch (Exception ex)
             {
                 cn.Close();
+            }
+        }
+
+
+        public int GetCantidadDoctores(int ClienteId)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetCantidadDoctores", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ClienteId", SqlDbType.Int).Value = ClienteId;
+                cmd.Parameters.Add("@Resul", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                return Convert.ToInt32(cmd.Parameters["@Resul"].Value);
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return 0;
             }
         }
 

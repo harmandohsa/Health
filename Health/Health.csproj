@@ -8353,6 +8353,8 @@
     <Content Include="sweetalert-master\themes\twitter\twitter.css" />
     <Content Include="WebForms\Wfrm_CambioClave.aspx" />
     <Content Include="WebForms\Wfrm_Clinica.aspx" />
+    <Content Include="WebForms\Wfrm_Doctor.aspx" />
+    <Content Include="WebForms\Wfrm_Especialidades.aspx" />
     <Content Include="WebForms\Wfrm_Inicio.aspx" />
     <Content Include="WebForms\Wfrm_Perfil.aspx" />
     <Content Include="WebForms\Wfrm_Permisos.aspx" />
@@ -8754,6 +8756,7 @@
     <Content Include="App_Data\RadSpell\de-DE.tdf" />
     <Content Include="App_Data\RadSpell\en-US.tdf" />
     <Content Include="App_Data\RadSpell\fr-FR.tdf" />
+    <Content Include="MasterPage\SitePopUp.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -8981,6 +8984,13 @@
     <Compile Include="MasterPage\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterPage\SitePopUp.Master.cs">
+      <DependentUpon>SitePopUp.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\SitePopUp.Master.designer.cs">
+      <DependentUpon>SitePopUp.Master</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -9004,6 +9014,20 @@
     </Compile>
     <Compile Include="WebForms\Wfrm_Clinica.aspx.designer.cs">
       <DependentUpon>Wfrm_Clinica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_Doctor.aspx.cs">
+      <DependentUpon>Wfrm_Doctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_Doctor.aspx.designer.cs">
+      <DependentUpon>Wfrm_Doctor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_Especialidades.aspx.cs">
+      <DependentUpon>Wfrm_Especialidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_Especialidades.aspx.designer.cs">
+      <DependentUpon>Wfrm_Especialidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Wfrm_Inicio.aspx.cs">
       <DependentUpon>Wfrm_Inicio.aspx</DependentUpon>

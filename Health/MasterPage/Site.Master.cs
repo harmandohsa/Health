@@ -22,7 +22,7 @@ namespace Health.MasterPage
                 if (Session["PersonaId"].ToString() != "")
                 {
                     DataSet DsArchivo = new DataSet();
-                    DsArchivo = ClPersona.Get_Datos_Persona(Convert.ToInt32(Session["PersonaId"]));
+                    DsArchivo = ClPersona.Get_Datos_Persona(Convert.ToInt32(Session["PersonaId"]),Session["Idioma"].ToString());
                     LblNombreUsuario.Text = DsArchivo.Tables["DATOS"].Rows[0]["Nombre"].ToString();
                     if (DsArchivo.Tables["DATOS"].Rows[0]["Foto_Perfil"].ToString() != "")
                     {
@@ -57,6 +57,7 @@ namespace Health.MasterPage
             lblMenuClinica.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "82");
             lblMenuUsuarios.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "84") + "s";
             lblMenuPermisos.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "99");
+            lblMenuDoc.Text = ClTraductor.BuscaString(Session["Idioma"].ToString(), "104");
         }
 
         void VerificaClnica()
@@ -102,6 +103,11 @@ namespace Health.MasterPage
                         System.Web.UI.HtmlControls.HtmlGenericControl liMenuClinica;
                         liMenuClinica = (System.Web.UI.HtmlControls.HtmlGenericControl)FindControl("liMenuClinica");
                         liMenuClinica.Visible = true;
+                        break;
+                    case 6: //Doctores
+                        System.Web.UI.HtmlControls.HtmlGenericControl liMenuDoctor;
+                        liMenuDoctor = (System.Web.UI.HtmlControls.HtmlGenericControl)FindControl("liMenuDoctor");
+                        liMenuDoctor.Visible = true;
                         break;
                 }
             }

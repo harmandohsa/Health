@@ -167,6 +167,7 @@
                     </div>
                 </div>
             </div>
+         
             <input id="TxtIdioma" style="visibility:hidden" runat="server" />
             <asp:TextBox runat="server" id="TxtCorreoAnt" Visible="false"></asp:TextBox>
             <asp:TextBox runat="server" id="TxtUsuarioId" Visible="false"></asp:TextBox>

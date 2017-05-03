@@ -135,6 +135,15 @@
   <data name="103" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="104" xml:space="preserve">
+    <value>Doctors</value>
+  </data>
+  <data name="105" xml:space="preserve">
+    <value>Specialty</value>
+  </data>
+  <data name="106" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="11" xml:space="preserve">
     <value>You must enter your password</value>
   </data>

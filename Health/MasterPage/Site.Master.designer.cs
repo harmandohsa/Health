@@ -58,6 +58,24 @@ namespace Health.MasterPage {
         protected global::System.Web.UI.WebControls.LinkButton lblMenuClinica;
         
         /// <summary>
+        /// liMenuDoctor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMenuDoctor;
+        
+        /// <summary>
+        /// lblMenuDoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lblMenuDoc;
+        
+        /// <summary>
         /// liMenuCambioClave control.
         /// </summary>
         /// <remarks>
