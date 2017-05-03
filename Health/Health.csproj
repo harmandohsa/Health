@@ -8960,6 +8960,7 @@
     <Compile Include="Clases\Cl_Traductor.cs" />
     <Compile Include="Clases\Cl_Usuario.cs" />
     <Compile Include="Clases\Cl_Utilitarios.cs" />
+    <Compile Include="Clases\Prueba.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -9101,7 +9102,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
