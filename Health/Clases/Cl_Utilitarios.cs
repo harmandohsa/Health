@@ -18,6 +18,7 @@ namespace Health.Clases
         Cl_Traductor ClTraductor;
         Cl_Usuario ClUsuario;
 
+        string Variable = "Var";
         public string Encrypt(string toEncrypt, bool useHashing)
         {
             byte[] keyArray;
