@@ -9,6 +9,8 @@ namespace Health.Clases
         SqlConnection cn = new SqlConnection(System.Configuration.ConfigurationManager.AppSettings["Conexion"]);
         DataSet ds = new DataSet();
 
+        string b = "";
+
         public DataSet GetDatosCliente(int ClienteId)
         {
             try
@@ -48,6 +50,7 @@ namespace Health.Clases
                 cn.Close();
             }
         }
+
 
         public int GetCantidadDoctores(int ClienteId)
         {
