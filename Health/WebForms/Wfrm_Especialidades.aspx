@@ -21,27 +21,33 @@
                                             <asp:Button runat="server" ID="BtnGrabar" data-loading-text="Grabando..."  CssClass="btn btn-primary" />
                                         </div>
                                     </div>
+                                    <div style="padding-bottom:1em;"></div>
                                     <div class="row">
-                                        <telerik:RadGrid runat="server" ID="GrdDetalle"  Skin="WebBlue"
-                                            AutoGenerateColumns="false" Width="100%" AllowSorting="true" AllowFilteringByColumn="true" PageSize="10"
-                                              AllowPaging="true" >
-                                            <PagerStyle Mode="NumericPages" Position="Bottom"/>
-                                            <MasterTableView Caption="" DataKeyNames="EspecialidadId,Especialidad">
-                                                <Columns>
-                                                    <telerik:GridBoundColumn DataField="EspecialidadId" UniqueName="EspecialidadId" Visible="false"  HeaderStyle-Width="125px"></telerik:GridBoundColumn>
-                                                    <telerik:GridBoundColumn DataField="Especialidad" AutoPostBackOnFilter="true" FilterControlWidth="400px" CurrentFilterFunction="Contains" UniqueName="Especialidad" HeaderText="Especialidad"  HeaderStyle-Width="425px"></telerik:GridBoundColumn>
-                                                    <telerik:GridTemplateColumn HeaderText="Quitar" ShowFilterIcon="false" AllowFiltering="false"  Visible="true" UniqueName="Editar" ItemStyle-HorizontalAlign="Center">
-                                                            <ItemTemplate>
-                                                                <asp:ImageButton runat="server" ID="ImgEditar" ImageUrl="~/Imagenes/delete.png" formnovalidate CommandName="CmdQuitar"/>
-                                                            </ItemTemplate>
-                                                    </telerik:GridTemplateColumn> 
+                                         <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <telerik:RadGrid runat="server" ID="GrdDetalle"  Skin="WebBlue"
+                                                AutoGenerateColumns="false" Width="100%" AllowSorting="true" AllowFilteringByColumn="true" PageSize="10"
+                                                  AllowPaging="true" >
+                                                <PagerStyle Mode="NumericPages" Position="Bottom"/>
+                                                <MasterTableView Caption="" DataKeyNames="EspecialidadId,Espe">
+                                                    <Columns>
+                                                        <telerik:GridBoundColumn DataField="EspecialidadId" UniqueName="EspecialidadId" Visible="false"  HeaderStyle-Width="125px"></telerik:GridBoundColumn>
+                                                        <telerik:GridBoundColumn DataField="Espe" AutoPostBackOnFilter="true" FilterControlWidth="500px" CurrentFilterFunction="Contains" UniqueName="Especialidad" HeaderText="Especialidad"  HeaderStyle-Width="525px"></telerik:GridBoundColumn>
+                                                        <telerik:GridTemplateColumn HeaderText="Quitar" ShowFilterIcon="false" AllowFiltering="false"  Visible="true" UniqueName="Editar" ItemStyle-HorizontalAlign="Center"  HeaderStyle-Width="125px">
+                                                                <ItemTemplate>
+                                                                    <asp:ImageButton runat="server" ID="ImgEditar" ImageUrl="~/Imagenes/delete.png" formnovalidate CommandName="CmdQuitar"/>
+                                                                </ItemTemplate>
+                                                        </telerik:GridTemplateColumn> 
                                                     
-                                                </Columns>        
-                                            </MasterTableView>
-                                            <FilterMenu EnableTheming="true">
-                                                <CollapseAnimation Duration="200" Type="OutQuint" />
-                                            </FilterMenu>
-                                        </telerik:RadGrid>
+                                                    </Columns>        
+                                                </MasterTableView>
+                                                <FilterMenu EnableTheming="true">
+                                                    <CollapseAnimation Duration="200" Type="OutQuint" />
+                                                </FilterMenu>
+                                            </telerik:RadGrid>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </section>

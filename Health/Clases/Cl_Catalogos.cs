@@ -196,5 +196,29 @@ namespace Health.Clases
                 return ds;
             }
         }
+
+        public DataSet Catalogo_Especialidades_Asignadas(string Idioma, int PersonaId)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Catalogo_Especialidades_Asignadas", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = Idioma;
+                cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
     }
 }

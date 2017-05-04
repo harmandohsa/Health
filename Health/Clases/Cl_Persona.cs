@@ -178,5 +178,47 @@ namespace Health.Clases
                 cn.Close();
             }
         }
+
+        public DataSet Get_Especialidad_Usuario(int PersonaId, string Idioma)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Get_Especialidad_Usuario", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                cmd.Parameters.Add("@idioma", SqlDbType.VarChar, 200).Value = Idioma;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
+
+        public void Delete_Especialidad(int PersonaId, int EspecialidadId)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Delete_Especialidad", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                cmd.Parameters.Add("@EspecialidadId", SqlDbType.Int).Value = EspecialidadId;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+            }
+        }
     }
 }
