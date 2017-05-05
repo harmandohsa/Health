@@ -42,18 +42,31 @@ namespace Health.WebForms
                 dsCntUsuarios.Clear();
                 BgPaciente.Attributes.Add("data-badge", "0");
                 BgCita.Attributes.Add("data-badge", "0");
-                DataSet dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
+                DataSet dsPermisosUsuario = new DataSet();
+
+                dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 5);
                 if (Convert.ToInt32(dsPermisosUsuario.Tables["Datos"].Rows[0]["Consultar"]) == 0)
                 {
-                    ImgUsuario.Enabled = false;
+                    ImgClinica.Visible = false;
+                    BgClinica.Visible = false;
                 }
                 dsPermisosUsuario.Clear();
-                DataSet dsPermisosClinica = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 5);
-                if (Convert.ToInt32(dsPermisosClinica.Tables["Datos"].Rows[0]["Consultar"]) == 0)
+
+                dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 6);
+                if (Convert.ToInt32(dsPermisosUsuario.Tables["Datos"].Rows[0]["Consultar"]) == 0)
                 {
-                    ImgClinica.Enabled = false;
+                    ImgDoctor.Visible = false;
+                    BgDoctor.Visible = false;
                 }
-                dsPermisosClinica.Clear();
+                dsPermisosUsuario.Clear();
+
+                dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
+                if (Convert.ToInt32(dsPermisosUsuario.Tables["Datos"].Rows[0]["Consultar"]) == 0)
+                {
+                    ImgUsuario.Visible = false;
+                    BgUsuarios.Visible = false;
+                }
+                dsPermisosUsuario.Clear();
 
             }
 
@@ -61,6 +74,11 @@ namespace Health.WebForms
 
 
             
+        }
+
+        void VerificaAccesos()
+        {
+
         }
 
         void VerificaClnica()

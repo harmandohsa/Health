@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -25112,7 +25112,7 @@ table.table thead .sorting_desc_disabled {
 /**********************************/
 .single-widget-container {
   left: 0;
-  top: 50%;
+  top: 40%;
   margin-top: -192.5px;
   position: absolute;
   width: 100%;

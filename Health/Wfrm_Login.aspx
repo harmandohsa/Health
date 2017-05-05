@@ -99,7 +99,7 @@
                             </div>
                         </fieldset>
                         <div class="form-actions">
-                            <button runat="server" id="BtnIngresar" class="btn btn-block btn-lg btn-danger">
+                            <button runat="server" id="BtnIngresar" class="btn btn-block btn-lg btn-info">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
                                 <small>Sign In</small>
                             </button>
