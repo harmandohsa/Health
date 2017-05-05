@@ -36,12 +36,12 @@ namespace Health.WebForms
                 Traduce();
                 VerificaClnica();
                 BgClinica.Attributes.Add("data-badge", ClClinica.ClinicasDisponibles(Convert.ToInt32(Session["ClienteId"])).ToString());
-                BgDoctor.Attributes.Add("data-badge", "2");
+                BgDoctor.Attributes.Add("data-badge", ClUsuario.DoctoresDisponibles(Convert.ToInt32(Session["ClienteId"])).ToString());
                 DataSet dsCntUsuarios = ClUsuario.Get_Usuarios(1, Convert.ToInt32(Session["ClienteId"]));
                 BgUsuarios.Attributes.Add("data-badge", dsCntUsuarios.Tables["DATOS"].Rows.Count.ToString());
                 dsCntUsuarios.Clear();
-                BgPaciente.Attributes.Add("data-badge", "4");
-                BgCita.Attributes.Add("data-badge", "5");
+                BgPaciente.Attributes.Add("data-badge", "0");
+                BgCita.Attributes.Add("data-badge", "0");
                 DataSet dsPermisosUsuario = ClUsuario.Get_Roles_Forma_Usuario(Convert.ToInt32(Session["UsuarioId"]), 2);
                 if (Convert.ToInt32(dsPermisosUsuario.Tables["Datos"].Rows[0]["Consultar"]) == 0)
                 {

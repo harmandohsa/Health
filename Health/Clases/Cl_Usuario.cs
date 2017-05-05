@@ -365,5 +365,25 @@ namespace Health.Clases
                 cn.Close();
             }
         }
+
+        public int DoctoresDisponibles(int ClienteId)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_DoctoresDisponibles", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@ClienteId", SqlDbType.VarChar, 200).Value = ClienteId;
+                cmd.Parameters.Add("@Resul", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                return Convert.ToInt32(cmd.Parameters["@Resul"].Value);
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return 0;
+            }
+        }
     }
 }

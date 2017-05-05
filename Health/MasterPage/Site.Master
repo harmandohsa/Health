@@ -53,8 +53,8 @@
                     <a class="accordion-toggle collapsed" data-toggle="collapse"
                        data-parent="#side-nav" href="#menu-levels-collapse"><i class="fa fa-folder-open"></i> <span class="name">Clinica</span></a>
                     <ul id="menu-levels-collapse" class="panel-collapse collapse">
-                        <li  runat="server" id="liMenuClinica" visible="false"><a><asp:LinkButton runat="server" ID="lblMenuClinica" PostBackUrl="~/WebForms/Wfrm_Clinica.aspx?"></asp:LinkButton></a></li>
-                        <li runat="server" id="liMenuDoctor" visible="false"><a><asp:LinkButton runat="server" ID="lblMenuDoc" PostBackUrl="~/WebForms/Wfrm_Doctor.aspx?"></asp:LinkButton></a></li>
+                        <li  runat="server" id="liMenuClinica" visible="false"><asp:LinkButton runat="server" ID="lblMenuClinica" PostBackUrl="~/WebForms/Wfrm_Clinica.aspx?"></asp:LinkButton></li>
+                        <li runat="server" id="liMenuDoctor" visible="false"><asp:LinkButton runat="server" ID="lblMenuDoc" PostBackUrl="~/WebForms/Wfrm_Doctor.aspx?"></asp:LinkButton></li>
                     </ul>
                     <a class="accordion-toggle collapsed" data-toggle="collapse"
                        data-parent="#side-nav" href="#special-collapse"><i class="fa fa-folder-open"></i> <span class="name">Administración</span></a>

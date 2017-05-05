@@ -65,7 +65,9 @@ namespace Health.WebForms
                 DataSet DsClincas = ClClinca.Get_Clincas(Convert.ToInt32(Session["ClienteId"]));
                 if (DsClincas.Tables["Datos"].Rows.Count == 1)
                     GrdDetalle.Columns[7].Visible = false;
-                
+                ValidaGrabar();
+
+
             }
             TxtIdioma.Value = Session["Idioma"].ToString();
         }
@@ -110,6 +112,7 @@ namespace Health.WebForms
                 TxtPersonaId.Text = dsUsuario.Tables["Datos"].Rows[0]["PersonaId"].ToString();
 
                 dsUsuario.Clear();
+                BtnGrabar.Visible = true;
             }
             else if (e.CommandName == "CmdEspecialidades")
             {
@@ -118,6 +121,19 @@ namespace Health.WebForms
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "key", "function f(){$find('" + RadWindowDetalle.ClientID + "').show();Sys.Application.remove_load(f);}Sys.Application.add_load(f);", true);
             }
         }
+
+        void ValidaGrabar()
+        {
+            if (ClUsuario.DoctoresDisponibles(Convert.ToInt32(Session["ClienteId"])) == 0)
+            {
+                BtnGrabar.Visible = false;
+            }
+            else
+            {
+                BtnGrabar.Visible = true;
+            }
+        }
+
 
         private void GrdDetalle_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
@@ -162,6 +178,7 @@ namespace Health.WebForms
                 }
 
             }
+            ValidaGrabar();
         }
 
         void Limpiar()
