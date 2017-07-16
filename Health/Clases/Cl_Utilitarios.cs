@@ -190,7 +190,7 @@ namespace Health.Clases
                 }
                 Correo.Priority = System.Net.Mail.MailPriority.High;
                 System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(System.Configuration.ConfigurationManager.AppSettings["Host"].ToString(), Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["Puerto"]));
-                //smtp.EnableSsl = true;
+                smtp.EnableSsl = true;
                 smtp.Credentials = new System.Net.NetworkCredential(System.Configuration.ConfigurationManager.AppSettings["Cuenta"], System.Configuration.ConfigurationManager.AppSettings["Clave"]);
 
                 smtp.Send(Correo);

@@ -144,8 +144,47 @@
   <data name="106" xml:space="preserve">
     <value>Agregar</value>
   </data>
+  <data name="107" xml:space="preserve">
+    <value>Solicitar cita con medico</value>
+  </data>
+  <data name="108" xml:space="preserve">
+    <value>Registro Usuario</value>
+  </data>
+  <data name="109" xml:space="preserve">
+    <value>Citas</value>
+  </data>
   <data name="11" xml:space="preserve">
     <value>Debe ingesar su clave</value>
+  </data>
+  <data name="110" xml:space="preserve">
+    <value>Nueva Cita</value>
+  </data>
+  <data name="111" xml:space="preserve">
+    <value>Especialidad</value>
+  </data>
+  <data name="112" xml:space="preserve">
+    <value>Perfil Medico</value>
+  </data>
+  <data name="113" xml:space="preserve">
+    <value>Datos del Medico</value>
+  </data>
+  <data name="114" xml:space="preserve">
+    <value>Agendar Cita</value>
+  </data>
+  <data name="115" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="116" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="117" xml:space="preserve">
+    <value>Debe ingresar la fecha deseada de la cita</value>
+  </data>
+  <data name="118" xml:space="preserve">
+    <value>Debe ingresar la hora de la cita</value>
+  </data>
+  <data name="119" xml:space="preserve">
+    <value>La fecha de la cita no puede ser menor a hoy</value>
   </data>
   <data name="12" xml:space="preserve">
     <value>Usuario no existe</value>

@@ -19,34 +19,38 @@ namespace Health.MasterPage
 
             if (!IsPostBack)
             {
-                if (Session["PersonaId"].ToString() != "")
+                if (Session["Paciente"].ToString() == "0")
                 {
-                    DataSet DsArchivo = new DataSet();
-                    DsArchivo = ClPersona.Get_Datos_Persona(Convert.ToInt32(Session["PersonaId"]),Session["Idioma"].ToString());
-                    LblNombreUsuario.Text = DsArchivo.Tables["DATOS"].Rows[0]["Nombre"].ToString();
-                    if (DsArchivo.Tables["DATOS"].Rows[0]["Foto_Perfil"].ToString() != "")
+                    if (Session["PersonaId"].ToString() != "")
                     {
-                        byte[] bytes = (byte[])DsArchivo.Tables["DATOS"].Rows[0]["Foto_Perfil"];
-                        ImgPerfil.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
-                    }
-                    DsArchivo.Clear();
-
-                    if (Convert.ToInt32(Session["ClinicaId"]) > 0)
-                    {
-                        DataSet DsLogoClinica = new DataSet();
-                        DsLogoClinica = ClClinica.Get_Clinca(Convert.ToInt32(Session["ClinicaId"]));
-                        LblNomClinica.Text = DsLogoClinica.Tables["DATOS"].Rows[0]["Nombre"].ToString();
-                        if (DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"].ToString() != "")
+                        DataSet DsArchivo = new DataSet();
+                        DsArchivo = ClPersona.Get_Datos_Persona(Convert.ToInt32(Session["PersonaId"]), Session["Idioma"].ToString());
+                        LblNombreUsuario.Text = DsArchivo.Tables["DATOS"].Rows[0]["Nombre"].ToString();
+                        if (DsArchivo.Tables["DATOS"].Rows[0]["Foto_Perfil"].ToString() != "")
                         {
-                            byte[] bytes = (byte[])DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"];
-                            ImgLogoClinica.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
+                            byte[] bytes = (byte[])DsArchivo.Tables["DATOS"].Rows[0]["Foto_Perfil"];
+                            ImgPerfil.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
                         }
-                        DsLogoClinica.Clear();
+                        DsArchivo.Clear();
+
+                        if (Convert.ToInt32(Session["ClinicaId"]) > 0)
+                        {
+                            DataSet DsLogoClinica = new DataSet();
+                            DsLogoClinica = ClClinica.Get_Clinca(Convert.ToInt32(Session["ClinicaId"]));
+                            LblNomClinica.Text = DsLogoClinica.Tables["DATOS"].Rows[0]["Nombre"].ToString();
+                            if (DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"].ToString() != "")
+                            {
+                                byte[] bytes = (byte[])DsLogoClinica.Tables["DATOS"].Rows[0]["Logo"];
+                                ImgLogoClinica.Src = "data:image/png;base64," + Convert.ToBase64String(bytes);
+                            }
+                            DsLogoClinica.Clear();
+                        }
+                        Permisos(Convert.ToInt32(Session["UsuarioId"]));
                     }
-                    Permisos(Convert.ToInt32(Session["UsuarioId"]));
+                    if (Convert.ToInt32(Session["TipoUsuarioId"]) != 5)
+                        VerificaClnica();
                 }
                 Traduce();
-                VerificaClnica();
             }
         }
 

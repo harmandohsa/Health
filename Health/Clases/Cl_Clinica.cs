@@ -178,5 +178,29 @@ namespace Health.Clases
             }
         }
 
+        public DataSet Get_Doctores_Activos(string Idioma, int EspecialidadId)
+        {
+            try
+            {
+                if (ds.Tables["DATOS"] != null)
+                    ds.Tables.Remove("DATOS");
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("Sp_Get_Doctores_Activos", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Idioma", SqlDbType.VarChar, 10).Value = Idioma;
+                cmd.Parameters.Add("@EspecialidadId", SqlDbType.Int).Value = EspecialidadId;
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                adp.Fill(ds, "DATOS");
+                cn.Close();
+                return ds;
+
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return ds;
+            }
+        }
+
     }
 }

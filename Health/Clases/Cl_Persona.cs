@@ -45,6 +45,29 @@ namespace Health.Clases
             }
         }
 
+
+        public void Insert_Persona_Paciente(int PersonaId, string Nombres, string Apellidos, int GeneroId, string Tel_Movil, DateTime Fecha_Nacimiento)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Insert_Persona_Paciente", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@PersonaId", SqlDbType.Int).Value = PersonaId;
+                cmd.Parameters.Add("@Nombres", SqlDbType.VarChar, 500).Value = Nombres;
+                cmd.Parameters.Add("@Apellidos", SqlDbType.VarChar, 500).Value = Apellidos;
+                cmd.Parameters.Add("@GeneroId", SqlDbType.Int).Value = GeneroId;
+                cmd.Parameters.Add("@Telefono_Movil", SqlDbType.VarChar, 500).Value = Tel_Movil;
+                cmd.Parameters.Add("@Fecha_Nac ", SqlDbType.Date).Value = Fecha_Nacimiento;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+            }
+        }
+
         public int Get_Max_Persona()
         {
             try

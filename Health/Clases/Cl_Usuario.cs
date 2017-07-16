@@ -201,7 +201,10 @@ namespace Health.Clases
                 SqlCommand cmd = new SqlCommand("SP_Insert_Usuario", cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@UsuarioId", SqlDbType.Int).Value = UsuarioId;
-                cmd.Parameters.Add("@ClienteId", SqlDbType.Int).Value = ClienteId;
+                if (ClienteId == 0)
+                    cmd.Parameters.Add("@ClienteId", SqlDbType.Int).Value = DBNull.Value;
+                else
+                    cmd.Parameters.Add("@ClienteId", SqlDbType.Int).Value = ClienteId;
                 cmd.Parameters.Add("@TipoUsuarioId", SqlDbType.Int).Value = TipoUsuarioId;
                 cmd.Parameters.Add("@Correo", SqlDbType.VarChar, 500).Value = Correo;
                 cmd.Parameters.Add("@Clave", SqlDbType.VarChar, 500).Value = Clave;
@@ -378,6 +381,26 @@ namespace Health.Clases
                 cmd.ExecuteNonQuery();
                 cn.Close();
                 return Convert.ToInt32(cmd.Parameters["@Resul"].Value);
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                return 0;
+            }
+        }
+
+        public int Get_TipoUsuario(string Usuario)
+        {
+            try
+            {
+                cn.Open();
+                SqlCommand cmd = new SqlCommand("SP_Get_TipoUsuario", cn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 200).Value = Usuario;
+                cmd.Parameters.Add("@Tipo_UsuarioId", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                cn.Close();
+                return Convert.ToInt32(cmd.Parameters["@Tipo_UsuarioId"].Value);
             }
             catch (Exception ex)
             {

@@ -7,117 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Health {
+namespace Health.WebForms {
     
     
-    public partial class Wfrm_Login {
+    public partial class Wfrm_NuevaCita {
         
         /// <summary>
-        /// h4Titulo control.
+        /// LblSubTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h4Titulo;
+        protected global::System.Web.UI.WebControls.Label LblSubTitulo;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// LblEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblEspecialidad;
         
         /// <summary>
-        /// ImgEsp control.
+        /// CboEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEsp;
+        protected global::System.Web.UI.WebControls.DropDownList CboEspecialidad;
         
         /// <summary>
-        /// ImgEng control.
+        /// GrdMedicos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEng;
+        protected global::Telerik.Web.UI.RadGrid GrdMedicos;
         
         /// <summary>
-        /// LblUsuario control.
+        /// TxtEspecialidadId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblUsuario;
+        protected global::System.Web.UI.WebControls.TextBox TxtEspecialidadId;
         
         /// <summary>
-        /// txtUsuario control.
+        /// RadCodeBlock1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsuario;
+        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
         
         /// <summary>
-        /// LblClave control.
+        /// RadWindowManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblClave;
+        protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
         
         /// <summary>
-        /// txtClave control.
+        /// RadWindow1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtClave;
+        protected global::Telerik.Web.UI.RadWindow RadWindow1;
         
         /// <summary>
-        /// BtnIngresar control.
+        /// RadWindowDetalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton BtnIngresar;
-        
-        /// <summary>
-        /// BtnCrearUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton BtnCrearUsuario;
-        
-        /// <summary>
-        /// LblForgot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor LblForgot;
-        
-        /// <summary>
-        /// BtnEnviaClave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEnviaClave;
+        protected global::Telerik.Web.UI.RadWindow RadWindowDetalle;
     }
 }

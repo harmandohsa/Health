@@ -7,117 +7,153 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Health {
+namespace Health.WebForms {
     
     
-    public partial class Wfrm_Login {
+    public partial class Wfrm_PerfilDoctor {
         
         /// <summary>
-        /// h4Titulo control.
+        /// ImgPerfil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h4Titulo;
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImgPerfil;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// LblTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label LblTitulo;
         
         /// <summary>
-        /// ImgEsp control.
+        /// LblNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEsp;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblNombre;
         
         /// <summary>
-        /// ImgEng control.
+        /// LblNombreDato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgEng;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblNombreDato;
         
         /// <summary>
-        /// LblUsuario control.
+        /// LblEspecialidades control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblEspecialidades;
         
         /// <summary>
-        /// txtUsuario control.
+        /// LblEspecialidadesDato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblEspecialidadesDato;
         
         /// <summary>
-        /// LblClave control.
+        /// lblTituloCita control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTituloCita;
         
         /// <summary>
-        /// txtClave control.
+        /// LblFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtClave;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblFecha;
         
         /// <summary>
-        /// BtnIngresar control.
+        /// TxtFecCita control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton BtnIngresar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtFecCita;
         
         /// <summary>
-        /// BtnCrearUsuario control.
+        /// lblHora control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton BtnCrearUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblHora;
         
         /// <summary>
-        /// LblForgot control.
+        /// TxtHoraCita control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor LblForgot;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtHoraCita;
         
         /// <summary>
-        /// BtnEnviaClave control.
+        /// TxtHoraFinal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEnviaClave;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtHoraFinal;
+        
+        /// <summary>
+        /// BtnGrabar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnGrabar;
+        
+        /// <summary>
+        /// DivErrr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivErrr;
+        
+        /// <summary>
+        /// LblErrMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblErrMsg;
+        
+        /// <summary>
+        /// RadCodeBlock1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
     }
 }

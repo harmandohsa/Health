@@ -10,7 +10,7 @@
 namespace Health.WebForms {
     
     
-    public partial class Wfrm_Inicio {
+    public partial class Wfrm_New_Paciente {
         
         /// <summary>
         /// LblSubTitulo control.
@@ -22,201 +22,147 @@ namespace Health.WebForms {
         protected global::System.Web.UI.WebControls.Label LblSubTitulo;
         
         /// <summary>
-        /// DashUno control.
+        /// LblNombres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DashUno;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblNombres;
         
         /// <summary>
-        /// lblTitDash1 control.
+        /// TxtNombres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitDash1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtNombres;
         
         /// <summary>
-        /// wExpand control.
+        /// LblApellidos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wExpand;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblApellidos;
         
         /// <summary>
-        /// wCollapse control.
+        /// TxtApellidos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wCollapse;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TxtApellidos;
         
         /// <summary>
-        /// wClose control.
+        /// LblGenero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wClose;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblGenero;
         
         /// <summary>
-        /// BgClinica control.
+        /// CboGenero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BgClinica;
+        protected global::System.Web.UI.WebControls.DropDownList CboGenero;
         
         /// <summary>
-        /// ImgClinica control.
+        /// LblFecNac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgClinica;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblFecNac;
         
         /// <summary>
-        /// BgDoctor control.
+        /// TxtFecNac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BgDoctor;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtFecNac;
         
         /// <summary>
-        /// ImgDoctor control.
+        /// LblTelMovil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgDoctor;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblTelMovil;
         
         /// <summary>
-        /// BgUsuarios control.
+        /// TxtTelMovil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BgUsuarios;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtTelMovil;
         
         /// <summary>
-        /// ImgUsuario control.
+        /// LblCorreo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblCorreo;
         
         /// <summary>
-        /// BgPaciente control.
+        /// TxtCorreo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BgPaciente;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl TxtCorreo;
         
         /// <summary>
-        /// ImgPaciente control.
+        /// BtnGrabar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgPaciente;
+        protected global::System.Web.UI.WebControls.Button BtnGrabar;
         
         /// <summary>
-        /// BgCita control.
+        /// DivErrr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor BgCita;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivErrr;
         
         /// <summary>
-        /// ImgCita control.
+        /// LblErrMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgCita;
+        protected global::System.Web.UI.WebControls.Label LblErrMsg;
         
         /// <summary>
-        /// DashPaciente control.
+        /// RadCodeBlock1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DashPaciente;
-        
-        /// <summary>
-        /// LblTitPaciente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblTitPaciente;
-        
-        /// <summary>
-        /// wExpandp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wExpandp;
-        
-        /// <summary>
-        /// wCollapsep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wCollapsep;
-        
-        /// <summary>
-        /// wClosep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor wClosep;
-        
-        /// <summary>
-        /// A1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
-        
-        /// <summary>
-        /// ImgCitaPaciente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgCitaPaciente;
+        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
     }
 }

@@ -8356,7 +8356,10 @@
     <Content Include="WebForms\Wfrm_Doctor.aspx" />
     <Content Include="WebForms\Wfrm_Especialidades.aspx" />
     <Content Include="WebForms\Wfrm_Inicio.aspx" />
+    <Content Include="WebForms\Wfrm_New_Paciente.aspx" />
+    <Content Include="WebForms\Wfrm_NuevaCita.aspx" />
     <Content Include="WebForms\Wfrm_Perfil.aspx" />
+    <Content Include="WebForms\Wfrm_PerfilDoctor.aspx" />
     <Content Include="WebForms\Wfrm_Permisos.aspx" />
     <Content Include="WebForms\Wfrm_Usuarios.aspx" />
     <Content Include="Wfrm_Login.aspx" />
@@ -8954,6 +8957,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Clases\Cl_Catalogos.cs" />
+    <Compile Include="Clases\Cl_Cita.cs" />
     <Compile Include="Clases\Cl_Cliente.cs" />
     <Compile Include="Clases\Cl_Clinica.cs" />
     <Compile Include="Clases\Cl_Persona.cs" />
@@ -9037,12 +9041,33 @@
     <Compile Include="WebForms\Wfrm_Inicio.aspx.designer.cs">
       <DependentUpon>Wfrm_Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\Wfrm_New_Paciente.aspx.cs">
+      <DependentUpon>Wfrm_New_Paciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_New_Paciente.aspx.designer.cs">
+      <DependentUpon>Wfrm_New_Paciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_NuevaCita.aspx.cs">
+      <DependentUpon>Wfrm_NuevaCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_NuevaCita.aspx.designer.cs">
+      <DependentUpon>Wfrm_NuevaCita.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Wfrm_Perfil.aspx.cs">
       <DependentUpon>Wfrm_Perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\Wfrm_Perfil.aspx.designer.cs">
       <DependentUpon>Wfrm_Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_PerfilDoctor.aspx.cs">
+      <DependentUpon>Wfrm_PerfilDoctor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Wfrm_PerfilDoctor.aspx.designer.cs">
+      <DependentUpon>Wfrm_PerfilDoctor.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Wfrm_Permisos.aspx.cs">
       <DependentUpon>Wfrm_Permisos.aspx</DependentUpon>

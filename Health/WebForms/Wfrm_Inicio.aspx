@@ -15,7 +15,7 @@
                         </fieldset>
                         <div class="row">
                             <div class="col-lg-10">
-                                <section class="widget">
+                                <section class="widget" runat="server" id="DashUno">
                                     <header>
                                         <h4>
                                             <asp:Label runat="server" ID="lblTitDash1"></asp:Label>
@@ -39,6 +39,23 @@
                                         <a runat="server" id="BgCita" class="badge2"><asp:ImageButton runat="server" ID="ImgCita" ImageUrl="~/Imagenes/cita.png" /></a>
                                     </div>
                                 </section>
+                                <section class="widget" runat="server" id="DashPaciente" visible="false">
+                                    <header>
+                                        <h4>
+                                            <asp:Label runat="server" ID="LblTitPaciente"></asp:Label>
+                                        </h4>
+                                        <div class="widget-controls">
+                                            <a data-widgster="expand" runat="server" id="wExpandp" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+                                            <a data-widgster="collapse" runat="server" id="wCollapsep" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                                            <a data-widgster="close" title="Close" runat="server" id="wClosep" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+                                        </div>
+                                    </header>
+                                    <div style="padding-bottom:1em;"></div>
+                                    <div class="body no-margin">
+                                        <a runat="server" id="A1" class="badge1"><asp:ImageButton PostBackUrl="~/WebForms/Wfrm_NuevaCita.aspx"  runat="server" ID="ImgCitaPaciente" ImageUrl="~/Imagenes/date.png" /></a>
+                                        <asp:Label runat="server" Text="***" ForeColor="Transparent"></asp:Label>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
@@ -46,4 +63,5 @@
                 </div>
             </div>
         </div>
+       
 </asp:Content>

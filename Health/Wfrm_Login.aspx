@@ -73,6 +73,7 @@
                 <div>
                     <form class="no-margin"
                            runat="server">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                         <fieldset>
                             <div class="form-search">
                                 <asp:ImageButton runat="server" ID="ImgEsp" Width="50px" Height="50px" ImageUrl="~/Imagenes/SpainFlag.png" />
@@ -99,8 +100,12 @@
                             </div>
                         </fieldset>
                         <div class="form-actions">
-                            <button runat="server" id="BtnIngresar" class="btn btn-block btn-lg btn-info">
+                            <button runat="server" id="BtnIngresar" class="btn btn-block btn-lg btn-primary">
                                 <span class="small-circle"><i class="fa fa-caret-right"></i></span>
+                                <small>Sign In</small>
+                            </button>
+                            <button runat="server" id="BtnCrearUsuario"   class="btn btn-block btn-lg btn-inverse">
+                                <span class="small-circle"><i  class="fa fa-caret-right"></i></span>
                                 <small>Sign In</small>
                             </button>
                             <a class="forgot" runat="server" id="LblForgot" >Forgot Username or Password?</a>
@@ -115,8 +120,9 @@
                     
                 </footer>
             </section>
+            
         </div>
-    
+         
 <!-- common libraries. required for every page-->
 <%--<script src="lib/jquery/dist/jquery.min.js"></script>--%>
 <script src="lib/jquery-pjax/jquery.pjax.js"></script>

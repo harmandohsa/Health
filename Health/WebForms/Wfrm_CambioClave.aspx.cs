@@ -109,8 +109,10 @@ namespace Health.WebForms
                     if (ClUtilitarios.Decrypt(HttpUtility.UrlDecode(Request.QueryString["appel"].ToString()), true) == "1")
                     {
                         ClUsuario.CambiaClave(Session["Usuario"].ToString(), ClUtilitarios.Encrypt(TxtPassNueva.Value,true), 0);
-                        if (Session["Fase_ClienteId"].ToString()  == "1")
+                        if ((Session["Fase_ClienteId"].ToString()  == "1"))
                             Response.Redirect("~/WebForms/Wfrm_Perfil.aspx?appel=" + HttpUtility.UrlEncode(ClUtilitarios.Encrypt("1", true) + ""));
+                        else if  ((Session["Fase_ClienteId"].ToString() == "0") || (Session["Fase_ClienteId"].ToString() == "2"))
+                            Response.Redirect("~/WebForms/Wfrm_Inicio.aspx");
                     }
                     else
                     {

@@ -144,8 +144,47 @@
   <data name="106" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="107" xml:space="preserve">
+    <value>Make an appointment with a doctor</value>
+  </data>
+  <data name="108" xml:space="preserve">
+    <value>User register</value>
+  </data>
+  <data name="109" xml:space="preserve">
+    <value>Dates</value>
+  </data>
   <data name="11" xml:space="preserve">
     <value>You must enter your password</value>
+  </data>
+  <data name="110" xml:space="preserve">
+    <value>New Appointment</value>
+  </data>
+  <data name="111" xml:space="preserve">
+    <value>Specialty</value>
+  </data>
+  <data name="112" xml:space="preserve">
+    <value>Doctor Profile</value>
+  </data>
+  <data name="113" xml:space="preserve">
+    <value>Medic details</value>
+  </data>
+  <data name="114" xml:space="preserve">
+    <value>Schedule appointment</value>
+  </data>
+  <data name="115" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="116" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="117" xml:space="preserve">
+    <value>You must enter the desired date of the appointment</value>
+  </data>
+  <data name="118" xml:space="preserve">
+    <value>You must enter the desired time of the appointment</value>
+  </data>
+  <data name="119" xml:space="preserve">
+    <value>The date of the appointment can not be less than today</value>
   </data>
   <data name="12" xml:space="preserve">
     <value>User dosen't exist</value>
